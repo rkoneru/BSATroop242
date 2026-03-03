@@ -9,6 +9,11 @@ export default defineConfig({
         VitePWA({
             registerType: 'autoUpdate',
             includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'mask-icon.svg'],
+            workbox: {
+                globPatterns: ['**/*.{js,css,html,ico,png,svg}'],
+                // Don't cache chrome-extension:// requests
+                navigateFallbackDenylist: [/^\/chrome-extension/],
+            },
             manifest: {
                 name: 'BSA Troop 242 - Central Florida',
                 short_name: 'Troop 242',
