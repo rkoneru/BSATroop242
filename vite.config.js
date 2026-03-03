@@ -9,9 +9,9 @@ export default defineConfig({
         react(),
         VitePWA({
             registerType: 'autoUpdate',
-            includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'mask-icon.svg'],
             workbox: {
-                globPatterns: ['**/*.{js,css,html,ico,png,svg}'],
+                globPatterns: ['**/*.{js,css,html,ico,png,svg,webp}'],
+                navigateFallback: 'index.html',
                 // Don't cache chrome-extension:// requests
                 navigateFallbackDenylist: [/^\/chrome-extension/],
             },
