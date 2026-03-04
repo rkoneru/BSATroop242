@@ -1056,7 +1056,16 @@ html {
     left: 0;
     width: 100%;
     height: 100vh;
-    background: linear-gradient(90deg, #87ceeb 0%, #e0f2ff 25%, #1a1a2e 75%, #0f0f1e 100%);
+    background: linear-gradient(90deg,
+        #87ceeb 0%,      /* Bright sky blue - day left */
+        #a8d8ff 15%,     /* Light blue */
+        #c4e4ff 25%,     /* Very light blue */
+        #d4c5ff 40%,     /* Purple-tinted blend */
+        #8b7ba8 50%,     /* Deep purple - midpoint transition */
+        #5a5a7a 60%,     /* Dark purple-blue blend */
+        #2c3e50 75%,     /* Dark blue-gray */
+        #1a1a2e 85%,     /* Very dark blue */
+        #0f0f1e 100%);   /* Darkest blue - night right */
     z-index: 0;
     overflow: hidden;
 }
@@ -1073,7 +1082,7 @@ html {
     top: 0;
     width: 50%;
     height: 100%;
-    background: linear-gradient(180deg, #87ceeb 0%, #e0f0ff 100%);
+    background: transparent;
     overflow: hidden;
 }
 
@@ -1227,7 +1236,7 @@ html {
     top: 0;
     width: 50%;
     height: 100%;
-    background: linear-gradient(180deg, #0f0f1e 0%, #1a1a2e 100%);
+    background: transparent;
     overflow: hidden;
 }
 

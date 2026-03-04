@@ -54,18 +54,18 @@ export default function IndexPage() {
                     {/* Sun */}
                     <div className="sun"></div>
 
-                    {/* Trees */}
-                    <div className="tree-day" style={{ left: '15%', bottom: '0' }}>
+                    {/* Trees - Day side left */}
+                    <div className="tree-day" style={{ left: '8%', bottom: '0' }}>
                         <div className="tree-day-foliage"></div>
                         <div className="tree-day-trunk"></div>
                     </div>
-                    <div className="tree-day" style={{ left: '35%', bottom: '0' }}>
+                    <div className="tree-day" style={{ left: '25%', bottom: '0' }}>
                         <div className="tree-day-foliage"></div>
                         <div className="tree-day-trunk"></div>
                     </div>
 
-                    {/* Deer */}
-                    <div className="deer-day" style={{ left: '20%' }}>
+                    {/* Deer - Day side */}
+                    <div className="deer-day" style={{ left: '15%', bottom: '120px' }}>
                         <div className="deer-body">
                             <div className="deer-head">
                                 <div className="deer-ear deer-ear-left"></div>
@@ -79,8 +79,8 @@ export default function IndexPage() {
                         </div>
                     </div>
 
-                    {/* Tents - Day */}
-                    <div className="tent-day" style={{ left: '50%', transform: 'translateX(-50%)' }}>
+                    {/* Tents - Day side center */}
+                    <div className="tent-day" style={{ left: '35%', bottom: '100px' }}>
                         <div className="tent-canvas">
                             <div className="tent-pole"></div>
                             <div className="tent-flag"></div>
@@ -107,25 +107,25 @@ export default function IndexPage() {
                         ></div>
                     ))}
 
-                    {/* Night Trees */}
-                    <div className="tree-night" style={{ right: '15%', bottom: '0' }}>
+                    {/* Night Trees - Night side right */}
+                    <div className="tree-night" style={{ right: '8%', bottom: '0' }}>
                         <div className="tree-night-foliage"></div>
                         <div className="tree-night-trunk"></div>
                     </div>
-                    <div className="tree-night" style={{ right: '35%', bottom: '0' }}>
+                    <div className="tree-night" style={{ right: '25%', bottom: '0' }}>
                         <div className="tree-night-foliage"></div>
                         <div className="tree-night-trunk"></div>
                     </div>
 
-                    {/* Night Tents with Light */}
-                    <div className="tent-night" style={{ left: '50%', transform: 'translateX(-50%)' }}>
+                    {/* Night Tents with Light - Night side center */}
+                    <div className="tent-night" style={{ right: '35%', bottom: '90px' }}>
                         <div className="tent-night-canvas">
                             <div className="tent-light"></div>
                         </div>
                     </div>
 
-                    {/* Scouts under stars */}
-                    <div className="scout-group" style={{ left: '50%', transform: 'translateX(-50%)' }}>
+                    {/* Scouts under stars - Night side right */}
+                    <div className="scout-group" style={{ right: '15%', bottom: '130px' }}>
                         <div className="scout">
                             <div className="scout-head"></div>
                             <div className="scout-body"></div>
@@ -153,8 +153,6 @@ export default function IndexPage() {
                     </div>
                 </div>
 
-                {/* Transition Gradient */}
-                <div className="transition-gradient"></div>
             </div>
 
             {/* Content Layer */}
