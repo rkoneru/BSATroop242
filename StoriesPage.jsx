@@ -1,9 +1,10 @@
-import { motion } from 'framer-motion';
-import { ChevronDown, Star } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { ChevronDown, Star, Menu, X } from 'lucide-react';
 import { useState } from 'react';
 
 export default function StoriesPage() {
     const [openFAQ, setOpenFAQ] = useState(null);
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     const successStories = [
         {
@@ -99,8 +100,47 @@ export default function StoriesPage() {
                             <div className="text-xs text-scout-tan font-semibold">Est. 1994</div>
                         </div>
                     </a>
-                    <a href="/" className="text-sm font-semibold text-gray-700 hover:text-scout-green transition-colors">← Back to Home</a>
+                    
+                    {/* Desktop Link */}
+                    <a href="/" className="hidden md:block text-sm font-semibold text-gray-700 hover:text-scout-green transition-colors">← Back to Home</a>
+
+                    {/* Mobile Menu Button */}
+                    <button
+                        className="md:hidden p-2 hover:bg-scout-tan/10 rounded-lg transition-colors"
+                        onClick={() => setIsMenuOpen(!isMenuOpen)}
+                        aria-label="Toggle menu"
+                        aria-expanded={isMenuOpen}
+                    >
+                        {isMenuOpen ? (
+                            <X className="w-6 h-6 text-scout-tan" />
+                        ) : (
+                            <Menu className="w-6 h-6 text-scout-tan" />
+                        )}
+                    </button>
                 </div>
+
+                {/* Mobile Menu */}
+                <AnimatePresence>
+                    {isMenuOpen && (
+                        <motion.div
+                            initial={{ opacity: 0, height: 0 }}
+                            animate={{ opacity: 1, height: 'auto' }}
+                            exit={{ opacity: 0, height: 0 }}
+                            transition={{ duration: 0.3 }}
+                            className="md:hidden border-t border-scout-nav overflow-hidden"
+                        >
+                            <div className="px-6 py-4 bg-navy-nav/95 backdrop-blur-md">
+                                <a 
+                                    href="/" 
+                                    className="block text-sm font-semibold text-gray-700 hover:text-scout-green transition-colors py-2"
+                                    onClick={() => setIsMenuOpen(false)}
+                                >
+                                    ← Back to Home
+                                </a>
+                            </div>
+                        </motion.div>
+                    )}
+                </AnimatePresence>
             </nav>
 
             <main id="main-content" className="pt-32 pb-20">

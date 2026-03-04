@@ -158,29 +158,83 @@ function App() {
                         </a>
                     </div>
 
-                    <button className="lg:hidden touch-target" onClick={() => setIsMenuOpen(!isMenuOpen)} aria-expanded={isMenuOpen} aria-controls="mobile-menu" aria-label="Toggle navigation menu">
-                        {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
+                    {/* Mobile Menu Button */}
+                    <button
+                        className="md:hidden p-2 hover:bg-scout-tan/10 rounded-lg transition-colors"
+                        onClick={() => setIsMenuOpen(!isMenuOpen)}
+                        aria-label="Toggle menu"
+                        aria-expanded={isMenuOpen}
+                    >
+                        {isMenuOpen ? (
+                            <X className="w-6 h-6 text-scout-tan" />
+                        ) : (
+                            <Menu className="w-6 h-6 text-scout-tan" />
+                        )}
                     </button>
                 </div>
 
+                {/* Mobile Menu */}
                 <AnimatePresence>
                     {isMenuOpen && (
                         <motion.div
-                            id="mobile-menu"
                             initial={{ opacity: 0, height: 0 }}
                             animate={{ opacity: 1, height: 'auto' }}
                             exit={{ opacity: 0, height: 0 }}
-                            className="md:hidden border-t border-scout-nav bg-navy-mobile backdrop-blur"
-                            aria-hidden={!isMenuOpen}
+                            transition={{ duration: 0.3 }}
+                            className="md:hidden border-t border-scout-nav overflow-hidden"
                         >
-                            <div className="px-6 py-6 space-y-6">
-                                <a href="#events" onClick={() => setIsMenuOpen(false)} className="block text-sm font-semibold text-gray-700 hover:text-scout-green py-2">Events</a>
-                                <a href="#tracker" onClick={() => setIsMenuOpen(false)} className="block text-sm font-semibold text-gray-700 hover:text-scout-green py-2">Progress</a>
-                                <a href="#badges" onClick={() => setIsMenuOpen(false)} className="block text-sm font-semibold text-gray-700 hover:text-scout-green py-2">Badges</a>
-                                <a href="#features" onClick={() => setIsMenuOpen(false)} className="block text-sm font-semibold text-gray-700 hover:text-scout-green py-2">Why Us</a>
-                                <a href="#resources" onClick={() => setIsMenuOpen(false)} className="block text-sm font-semibold text-gray-700 hover:text-scout-green py-2">Resources</a>
-                                <a href="#contact" onClick={() => setIsMenuOpen(false)} className="block text-sm font-semibold text-gray-700 hover:text-scout-green py-2">Contact</a>
-                                <a href="https://scoutbook.scouting.org/" target="_blank" rel="noopener noreferrer" className="block text-sm font-semibold text-scout-green py-2">Scoutbook →</a>
+                            <div className="px-6 py-4 space-y-4 bg-navy-nav/95 backdrop-blur-md">
+                                <a 
+                                    href="#events" 
+                                    className="block text-sm font-semibold text-gray-700 hover:text-scout-green transition-colors py-2"
+                                    onClick={() => setIsMenuOpen(false)}
+                                >
+                                    Events
+                                </a>
+                                <a 
+                                    href="#tracker" 
+                                    className="block text-sm font-semibold text-gray-700 hover:text-scout-green transition-colors py-2"
+                                    onClick={() => setIsMenuOpen(false)}
+                                >
+                                    Progress
+                                </a>
+                                <a 
+                                    href="#badges" 
+                                    className="block text-sm font-semibold text-gray-700 hover:text-scout-green transition-colors py-2"
+                                    onClick={() => setIsMenuOpen(false)}
+                                >
+                                    Badges
+                                </a>
+                                <a 
+                                    href="#features" 
+                                    className="block text-sm font-semibold text-gray-700 hover:text-scout-green transition-colors py-2"
+                                    onClick={() => setIsMenuOpen(false)}
+                                >
+                                    Why Us
+                                </a>
+                                <a 
+                                    href="#resources" 
+                                    className="block text-sm font-semibold text-gray-700 hover:text-scout-green transition-colors py-2"
+                                    onClick={() => setIsMenuOpen(false)}
+                                >
+                                    Resources
+                                </a>
+                                <a 
+                                    href="#contact" 
+                                    className="block text-sm font-semibold text-gray-700 hover:text-scout-green transition-colors py-2"
+                                    onClick={() => setIsMenuOpen(false)}
+                                >
+                                    Contact
+                                </a>
+                                <a 
+                                    href="https://scoutbook.scouting.org/" 
+                                    target="_blank" 
+                                    rel="noopener noreferrer" 
+                                    className="block text-sm font-semibold text-gray-700 hover:text-scout-green transition-colors py-2"
+                                    onClick={() => setIsMenuOpen(false)}
+                                >
+                                    Scoutbook
+                                </a>
                             </div>
                         </motion.div>
                     )}
@@ -629,7 +683,8 @@ function App() {
                             {[
                                 { icon: Calendar, title: 'When', desc: 'Tuesdays at 7:00 PM', detail: 'Year-round meetings' },
                                 { icon: MapPin, title: 'Where', desc: 'Central Florida', detail: 'Sanford area', link: 'https://www.mapquest.com/us/florida/boy-scout-troop-242-796734459' },
-                                { icon: Users, title: 'Contact', desc: 'troop242sanford@gmail.com', detail: 'Reply within 24 hours' }
+                                { icon: Users, title: 'Contact', desc: 'troop242sanford@gmail.com', detail: 'Reply within 24 hours', link: 'mailto:troop242sanford@gmail.com' }
+
                             ].map((item, i) => {
                                 const Icon = item.icon;
                                 const content = (
@@ -680,7 +735,7 @@ function App() {
                 {/* Footer */}
                 <footer className="footer-scout py-12 relative z-10">
                     <div className="max-w-7xl mx-auto px-6">
-                        <div className="flex flex-col gap-8 mb-8">
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
                             <div>
                                 <div className="text-xl font-black italic mb-2 text-scout-tan">BSA Troop 242</div>
                                 <p className="text-gray-600 text-sm">Building leaders and forging character through scouting excellence since 1994.</p>
@@ -715,7 +770,7 @@ function App() {
                         </div>
 
                         <div className="border-t border-gray-300 pt-8 text-center text-gray-500 text-sm">
-                            <p>&copy; 2026 Boy Scouts of America - Troop 242 (Central Florida Council). All rights reserved.</p>
+                            <p>&copy; 2026 Scouting America - Troop 242 (Central Florida Council). All rights reserved.</p>
                         </div>
                     </div>
                 </footer>

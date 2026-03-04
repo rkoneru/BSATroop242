@@ -1,7 +1,10 @@
-import { motion } from 'framer-motion';
-import { ArrowRight } from 'lucide-react';
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { ArrowRight, Menu, X } from 'lucide-react';
 
 export default function IndexPage() {
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+    
     const testimonials = [
         {
             name: 'Michael Johnson',
@@ -62,11 +65,57 @@ export default function IndexPage() {
                         <div className="text-2xl">⛺</div>
                         <div className="font-bold text-gray-900">BSA Troop 242</div>
                     </a>
-                    <div className="flex items-center gap-4">
+                    
+                    {/* Desktop Menu */}
+                    <div className="hidden md:flex items-center gap-4">
                         <a href="/" className="text-sm text-gray-600 hover:text-gray-900 transition-colors">More</a>
                         <a href="/stories" className="text-sm text-gray-600 hover:text-gray-900 transition-colors">Stories & FAQ</a>
                     </div>
+
+                    {/* Mobile Menu Button */}
+                    <button
+                        className="md:hidden p-2 hover:bg-gray-100 rounded-lg transition-colors"
+                        onClick={() => setIsMenuOpen(!isMenuOpen)}
+                        aria-label="Toggle menu"
+                        aria-expanded={isMenuOpen}
+                    >
+                        {isMenuOpen ? (
+                            <X className="w-6 h-6 text-gray-900" />
+                        ) : (
+                            <Menu className="w-6 h-6 text-gray-900" />
+                        )}
+                    </button>
                 </div>
+
+                {/* Mobile Menu */}
+                <AnimatePresence>
+                    {isMenuOpen && (
+                        <motion.div
+                            initial={{ opacity: 0, height: 0 }}
+                            animate={{ opacity: 1, height: 'auto' }}
+                            exit={{ opacity: 0, height: 0 }}
+                            transition={{ duration: 0.3 }}
+                            className="md:hidden border-t border-gray-200 overflow-hidden"
+                        >
+                            <div className="px-6 py-4 space-y-4 bg-white">
+                                <a 
+                                    href="/" 
+                                    className="block text-sm text-gray-600 hover:text-gray-900 transition-colors py-2"
+                                    onClick={() => setIsMenuOpen(false)}
+                                >
+                                    More
+                                </a>
+                                <a 
+                                    href="/stories" 
+                                    className="block text-sm text-gray-600 hover:text-gray-900 transition-colors py-2"
+                                    onClick={() => setIsMenuOpen(false)}
+                                >
+                                    Stories & FAQ
+                                </a>
+                            </div>
+                        </motion.div>
+                    )}
+                </AnimatePresence>
             </nav>
 
             <main id="main-content" className="pt-24">
