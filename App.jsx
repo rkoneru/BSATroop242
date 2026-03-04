@@ -2,8 +2,6 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
     Calendar,
-    Menu,
-    X,
     Download,
     MapPin,
     Clock,
@@ -17,6 +15,10 @@ import {
     ChevronDown,
     RotateCcw
 } from 'lucide-react';
+import Header from './Header.jsx';
+import Footer from './Footer.jsx';
+import { EVENTS } from './eventsData.js';
+import { MERIT_BADGES } from './meritBadgesData.js';
 
 const RANK_REQUIREMENTS = {
     'Scout': ['Learn the Scout Oath & Scout Law', 'Complete Cyber Chip award', 'Participate in a troop/patrol activity'],
@@ -29,7 +31,6 @@ const RANK_REQUIREMENTS = {
 };
 
 function App() {
-    const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [progress, setProgress] = useState(() => {
         try { return JSON.parse(localStorage.getItem('troop242_rank_progress')) || {}; }
         catch { return {}; }
@@ -54,28 +55,9 @@ function App() {
         setProgress(prev => ({ ...prev, [rankName]: new Array(RANK_REQUIREMENTS[rankName].length).fill(false) }));
     };
 
-    const events = [
-        { date: 'Mar 10', day: 'Tuesday', time: '7:00 PM', title: 'Troop Meeting', location: 'Charter Org', type: 'Meeting', icon: '📅' },
-        { date: 'Mar 19-22', day: 'Weekend', time: 'All Day', title: 'Spring Campout', location: 'Keys', type: 'Campout', icon: '⛺', featured: true },
-        { date: 'Apr 5', day: 'Saturday', time: '7:30 PM', title: 'Board of Review', location: 'Charter Org', type: 'Advancement', icon: '🎖️' },
-    ];
+    const events = EVENTS;
 
-    const meritBadges = [
-        // Eagle Required (13 total) - Alphabetical
-        { name: 'Camping', emoji: '⛺', url: 'https://www.scouting.org/awards/merit-badges/camping/' },
-        { name: 'Citizenship in Community', emoji: '🗳️', url: 'https://www.scouting.org/awards/merit-badges/citizenship-in-the-community/' },
-        { name: 'Citizenship in Nation', emoji: '🇺🇸', url: 'https://www.scouting.org/awards/merit-badges/citizenship-in-the-nation/' },
-        { name: 'Citizenship in World', emoji: '🌍', url: 'https://www.scouting.org/awards/merit-badges/citizenship-in-the-world/' },
-        { name: 'Communication', emoji: '💬', url: 'https://www.scouting.org/awards/merit-badges/communication/' },
-        { name: 'Cooking', emoji: '🍳', url: 'https://www.scouting.org/awards/merit-badges/cooking/' },
-        { name: 'Emergency Preparedness', emoji: '🚨', url: 'https://www.scouting.org/awards/merit-badges/emergency-preparedness/' },
-        { name: 'Energy', emoji: '⚡', url: 'https://www.scouting.org/awards/merit-badges/energy/' },
-        { name: 'Environmental Science', emoji: '🌿', url: 'https://www.scouting.org/awards/merit-badges/environmental-science/' },
-        { name: 'First Aid', emoji: '🩹', url: 'https://www.scouting.org/awards/merit-badges/first-aid/' },
-        { name: 'Personal Fitness', emoji: '💪', url: 'https://www.scouting.org/awards/merit-badges/personal-fitness/' },
-        { name: 'Personal Management', emoji: '📊', url: 'https://www.scouting.org/awards/merit-badges/personal-management/' },
-        { name: 'Swimming', emoji: '🏊', url: 'https://www.scouting.org/awards/merit-badges/swimming/' },
-    ];
+    const meritBadges = MERIT_BADGES;
 
     const ranks = [
         { name: 'Scout', emoji: '⭐', url: 'https://www.scouting.org/programs/scouts-bsa/advancement-and-awards/scout/' },
@@ -130,116 +112,8 @@ function App() {
                 <div className="absolute bottom-0 left-0 w-96 h-96 rounded-full blur-3xl" style={{ background: 'rgba(212,168,83,0.08)' }}></div>
             </div>
 
-            {/* Navigation */}
-            <nav className="fixed top-0 left-0 w-full z-50 backdrop-blur-md bg-navy-nav border-scout-nav" aria-label="Primary navigation">
-                <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center relative z-10">
-                    <motion.div
-                        className="flex items-center gap-3"
-                        whileHover={{ scale: 1.05 }}
-                    >
-                        <div className="w-12 h-12 rounded-lg flex items-center justify-center shadow-lg text-2xl" style={{ background: 'linear-gradient(135deg, #011301ff, #fafafaff)' }}>
-                            ⛺
-                        </div>
-                        <div>
-                            <div className="text-xl font-black italic uppercase tracking-tight text-scout-tan">BSA Troop 242</div>
-                            <div className="text-xs text-scout-tan font-semibold">Sanford - Central Florida</div>
-                        </div>
-                    </motion.div>
-
-                    <div className="hidden md:flex items-center gap-8">
-                        <a href="#events" className="text-sm font-semibold text-gray-700 hover:text-scout-green transition-colors">Events</a>
-                        <a href="#tracker" className="text-sm font-semibold text-gray-700 hover:text-scout-green transition-colors">Progress</a>
-                        <a href="#badges" className="text-sm font-semibold text-gray-700 hover:text-scout-green transition-colors">Badges</a>
-                        <a href="#features" className="text-sm font-semibold text-gray-700 hover:text-scout-green transition-colors">Why Us</a>
-                        <a href="#resources" className="text-sm font-semibold text-gray-700 hover:text-scout-green transition-colors">Resources</a>
-                        <a href="#contact" className="text-sm font-semibold text-gray-700 hover:text-scout-green transition-colors">Contact</a>
-                        <a href="https://scoutbook.scouting.org/" target="_blank" rel="noopener noreferrer" className="text-sm font-semibold text-gray-700 hover:text-scout-green transition-colors">
-                            Scoutbook
-                        </a>
-                    </div>
-
-                    {/* Mobile Menu Button */}
-                    <button
-                        className="md:hidden p-2 hover:bg-scout-tan/10 rounded-lg transition-colors"
-                        onClick={() => setIsMenuOpen(!isMenuOpen)}
-                        aria-label="Toggle menu"
-                        aria-expanded={isMenuOpen}
-                    >
-                        {isMenuOpen ? (
-                            <X className="w-6 h-6 text-scout-tan" />
-                        ) : (
-                            <Menu className="w-6 h-6 text-scout-tan" />
-                        )}
-                    </button>
-                </div>
-
-                {/* Mobile Menu */}
-                <AnimatePresence>
-                    {isMenuOpen && (
-                        <motion.div
-                            initial={{ opacity: 0, height: 0 }}
-                            animate={{ opacity: 1, height: 'auto' }}
-                            exit={{ opacity: 0, height: 0 }}
-                            transition={{ duration: 0.3 }}
-                            className="md:hidden border-t border-scout-nav overflow-hidden"
-                        >
-                            <div className="px-6 py-6 bg-navy-nav/95 backdrop-blur-md">
-                                <a 
-                                    href="#events" 
-                                    className="block text-base font-semibold text-gray-700 hover:text-scout-green transition-colors py-3 px-2 border-b border-gray-200/20"
-                                    onClick={() => setIsMenuOpen(false)}
-                                >
-                                    Events
-                                </a>
-                                <a 
-                                    href="#tracker" 
-                                    className="block text-base font-semibold text-gray-700 hover:text-scout-green transition-colors py-3 px-2 border-b border-gray-200/20"
-                                    onClick={() => setIsMenuOpen(false)}
-                                >
-                                    Progress
-                                </a>
-                                <a 
-                                    href="#badges" 
-                                    className="block text-base font-semibold text-gray-700 hover:text-scout-green transition-colors py-3 px-2 border-b border-gray-200/20"
-                                    onClick={() => setIsMenuOpen(false)}
-                                >
-                                    Badges
-                                </a>
-                                <a 
-                                    href="#features" 
-                                    className="block text-base font-semibold text-gray-700 hover:text-scout-green transition-colors py-3 px-2 border-b border-gray-200/20"
-                                    onClick={() => setIsMenuOpen(false)}
-                                >
-                                    Why Us
-                                </a>
-                                <a 
-                                    href="#resources" 
-                                    className="block text-base font-semibold text-gray-700 hover:text-scout-green transition-colors py-3 px-2 border-b border-gray-200/20"
-                                    onClick={() => setIsMenuOpen(false)}
-                                >
-                                    Resources
-                                </a>
-                                <a 
-                                    href="#contact" 
-                                    className="block text-base font-semibold text-gray-700 hover:text-scout-green transition-colors py-3 px-2 border-b border-gray-200/20"
-                                    onClick={() => setIsMenuOpen(false)}
-                                >
-                                    Contact
-                                </a>
-                                <a 
-                                    href="https://scoutbook.scouting.org/" 
-                                    target="_blank" 
-                                    rel="noopener noreferrer" 
-                                    className="block text-base font-semibold text-gray-700 hover:text-scout-green transition-colors py-3 px-2"
-                                    onClick={() => setIsMenuOpen(false)}
-                                >
-                                    Scoutbook
-                                </a>
-                            </div>
-                        </motion.div>
-                    )}
-                </AnimatePresence>
-            </nav>
+            {/* Shared Header */}
+            <Header />
 
             <main id="main-content">
                 {/* Hero Section */}
@@ -407,7 +281,7 @@ function App() {
                                     <p className="text-lg text-white mb-2">📅 <strong>Full Calendar View</strong></p>
                                     <p className="text-sm text-white/80">All Troop 242 events in one place</p>
                                 </div>
-                                <a href="https://calendar.google.com/calendar/r?cid=dHJvb3AyNDJzYW5mb3JkQGdtYWlsLmNvbQ" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-scout-tan font-bold hover:text-white group whitespace-nowrap">
+                                <a href="https://calendar.google.com/calendar/r?cid=k11l4b9od26qdlquf6fth7stbg%40group.calendar.google.com" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-scout-tan font-bold hover:text-white group whitespace-nowrap">
                                     Subscribe to Calendar <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
                                 </a>
                             </div>
@@ -589,7 +463,7 @@ function App() {
 
                 {/* Merit Badges Section */}
                 <section id="badges" className="py-16 md:py-20 relative z-10">
-                    <div className="max-w-7xl mx-auto px-4 md:px-6">
+                    <div className="max-w-7xl mx-auto px-6">
                         <motion.h2
                             className="text-4xl md:text-5xl font-black mb-2 md:mb-4 italic uppercase"
                             initial={{ opacity: 0, x: -20 }}
@@ -614,8 +488,23 @@ function App() {
                                             transition={{ delay: i * 0.08 }}
                                             aria-label={`${badge.name} merit badge requirements (opens scouting.org)`}
                                         >
-                                            <div className="rank-badge__emoji">{badge.emoji}</div>
-                                            <div className="rank-badge__name">{badge.name}</div>
+                                            <svg className="rank-badge__svg" viewBox="0 0 120 120">
+                                                <defs>
+                                                    <path id={`circlePath${i}`} d="M 60, 60 m -48, 0 a 48,48 0 1,1 96,0 a 48,48 0 1,1 -96,0" fill="none" />
+                                                </defs>
+                                                <text className="rank-badge__text" letterSpacing="1">
+                                                    <textPath href={`#circlePath${i}`} startOffset="50%" textAnchor="middle">
+                                                        {badge.name}
+                                                    </textPath>
+                                                </text>
+                                            </svg>
+                                            <div className="rank-badge__emoji">
+                                                {badge.image ? (
+                                                    <img src={badge.image} alt={badge.name} className="w-full h-full object-contain" />
+                                                ) : (
+                                                    <span className="text-3xl">{badge.emoji}</span>
+                                                )}
+                                            </div>
                                         </motion.a>
                                     ))}
                                 </div>
@@ -717,7 +606,7 @@ function App() {
                             })}
                         </div>
 
-                        <motion.div
+                        {/* <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             className="mt-12 text-center"
@@ -728,53 +617,14 @@ function App() {
                             >
                                 Send Us an Email
                             </a>
-                        </motion.div>
+                        </motion.div> */}
                     </div>
                 </section>
 
-                {/* Footer */}
-                <footer className="footer-scout py-12 relative z-10">
-                    <div className="max-w-7xl mx-auto px-6">
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
-                            <div>
-                                <div className="text-xl font-black italic mb-2 text-scout-tan">BSA Troop 242</div>
-                                <p className="text-gray-600 text-sm">Building leaders and forging character through scouting excellence since 1994.</p>
-                            </div>
-                            <div>
-                                <h4 className="font-bold mb-4 text-gray-800">Site Map</h4>
-                                <ul className="space-y-2 text-sm text-gray-600">
-                                    <li><a href="#events" className="hover:text-scout-tan transition-colors">Events</a></li>
-                                    <li><a href="#tracker" className="hover:text-scout-tan transition-colors">Progress</a></li>
-                                    <li><a href="#badges" className="hover:text-scout-tan transition-colors">Badges</a></li>
-                                    <li><a href="#features" className="hover:text-scout-tan transition-colors">Why Us</a></li>
-                                    <li><a href="#resources" className="hover:text-scout-tan transition-colors">Resources</a></li>
-                                    <li><a href="/stories" className="hover:text-scout-tan transition-colors">Scout Stories</a></li>
-                                    <li><a href="/index" className="hover:text-scout-tan transition-colors">Quick Overview</a></li>
-                                </ul>
-                            </div>
-                            <div>
-                                <h4 className="font-bold mb-4 text-gray-800">Resources</h4>
-                                <ul className="space-y-2 text-sm text-gray-600">
-                                    <li><a href="https://scoutbook.scouting.org/" target="_blank" rel="noopener noreferrer" className="hover:text-scout-tan transition-colors">Scoutbook</a></li>
-                                    <li><a href="https://www.scouting.org/" target="_blank" rel="noopener noreferrer" className="hover:text-scout-tan transition-colors">BSA.org</a></li>
-                                    <li><a href="https://calendar.google.com/calendar/r?cid=dHJvb3AyNDJzYW5mb3JkQGdtYWlsLmNvbQ" target="_blank" rel="noopener noreferrer" className="hover:text-scout-tan transition-colors">Calendar</a></li>
-                                </ul>
-                            </div>
-                            <div>
-                                <h4 className="font-bold mb-4 text-gray-800">Get Involved</h4>
-                                <p className="text-sm text-gray-600 mb-4">Ready to join? Contact us today!</p>
-                                <a href="mailto:troop242sanford@gmail.com" className="inline-block px-4 py-2 btn-footer-scout rounded-lg text-sm font-bold transition-colors">
-                                    Email Us
-                                </a>
-                            </div>
-                        </div>
-
-                        <div className="border-t border-gray-300 pt-8 text-center text-gray-500 text-sm">
-                            <p>&copy; 2026 Scouting America - Troop 242 (Central Florida Council). All rights reserved.</p>
-                        </div>
-                    </div>
-                </footer>
             </main>
+
+            {/* Shared Footer */}
+            <Footer />
         </div>
     );
 }

@@ -1,30 +1,13 @@
+import { motion } from 'framer-motion';
+import { Bell, X } from 'lucide-react';
 import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowRight, Menu, X } from 'lucide-react';
+import Header from './Header.jsx';
+import Footer from './Footer.jsx';
+import { useAnnouncements } from './AnnouncementContext.jsx';
 
 export default function IndexPage() {
-    const [isMenuOpen, setIsMenuOpen] = useState(false);
-    
-    const testimonials = [
-        {
-            name: 'Michael Johnson',
-            rank: 'Eagle Scout 2024',
-            quote: 'Scouting in Troop 242 shaped who I am today.',
-            emoji: '🦅'
-        },
-        {
-            name: 'Sarah Chen',
-            rank: 'Life Scout',
-            quote: 'The leadership skills prepared me for college and beyond.',
-            emoji: '❤️'
-        },
-        {
-            name: 'David Martinez',
-            rank: 'Eagle Scout 2023',
-            quote: 'From shy Scout to Eagle leading camping trips.',
-            emoji: '🦅'
-        }
-    ];
+    const [dismissedAnnouncements, setDismissedAnnouncements] = useState([]);
+    const { announcements } = useAnnouncements();
 
     const services = [
         {
@@ -56,72 +39,21 @@ export default function IndexPage() {
         { number: '95%', label: 'Advancement Success' }
     ];
 
+    const toggleAnnouncement = (id) => {
+        setDismissedAnnouncements(prev =>
+            prev.includes(id) ? prev.filter(a => a !== id) : [...prev, id]
+        );
+    };
+
     return (
         <div className="bg-white min-h-screen page-container">
-            {/* Navigation */}
-            <nav className="fixed top-0 left-0 right-0 bg-white backdrop-blur border-b border-gray-200 z-50">
-                <div className="max-w-7xl mx-auto px-4 md:px-6 py-4 flex justify-between items-center">
-                    <a href="/" className="flex items-center gap-2">
-                        <div className="text-2xl">⛺</div>
-                        <div className="font-bold text-gray-900">BSA Troop 242</div>
-                    </a>
-                    
-                    {/* Desktop Menu */}
-                    <div className="hidden md:flex items-center gap-4">
-                        <a href="/" className="text-sm text-gray-600 hover:text-gray-900 transition-colors">More</a>
-                        <a href="/stories" className="text-sm text-gray-600 hover:text-gray-900 transition-colors">Stories & FAQ</a>
-                    </div>
-
-                    {/* Mobile Menu Button */}
-                    <button
-                        className="md:hidden p-2 hover:bg-gray-100 rounded-lg transition-colors"
-                        onClick={() => setIsMenuOpen(!isMenuOpen)}
-                        aria-label="Toggle menu"
-                        aria-expanded={isMenuOpen}
-                    >
-                        {isMenuOpen ? (
-                            <X className="w-6 h-6 text-gray-900" />
-                        ) : (
-                            <Menu className="w-6 h-6 text-gray-900" />
-                        )}
-                    </button>
-                </div>
-
-                {/* Mobile Menu */}
-                <AnimatePresence>
-                    {isMenuOpen && (
-                        <motion.div
-                            initial={{ opacity: 0, height: 0 }}
-                            animate={{ opacity: 1, height: 'auto' }}
-                            exit={{ opacity: 0, height: 0 }}
-                            transition={{ duration: 0.3 }}
-                            className="md:hidden border-t border-gray-200 overflow-hidden"
-                        >
-                            <div className="px-6 py-6 bg-white">
-                                <a 
-                                    href="/" 
-                                    className="block text-base font-semibold text-gray-600 hover:text-gray-900 transition-colors py-3 px-2 border-b border-gray-200"
-                                    onClick={() => setIsMenuOpen(false)}
-                                >
-                                    More
-                                </a>
-                                <a 
-                                    href="/stories" 
-                                    className="block text-base font-semibold text-gray-600 hover:text-gray-900 transition-colors py-3 px-2"
-                                    onClick={() => setIsMenuOpen(false)}
-                                >
-                                    Stories & FAQ
-                                </a>
-                            </div>
-                        </motion.div>
-                    )}
-                </AnimatePresence>
-            </nav>
+            {/* Shared Header */}
+            <Header />
 
             <main id="main-content" className="pt-24">
                 {/* Hero Section - Mindoor Style */}
                 <section className="py-20 md:py-32 bg-white">
-                    <div className="max-w-5xl mx-auto px-4 md:px-6">
+                    <div className="max-w-7xl mx-auto px-6">
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
@@ -161,9 +93,70 @@ export default function IndexPage() {
                     </div>
                 </section>
 
+                {/* Announcements Section */}
+                <section className="py-16 md:py-20 bg-gradient-to-r from-blue-50 to-indigo-50">
+                    <div className="max-w-7xl mx-auto px-6">
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            className="flex items-center gap-3 mb-8"
+                        >
+                            <Bell className="w-8 h-8 text-blue-600" />
+                            <h2 className="text-3xl md:text-4xl font-black text-gray-900">
+                                Latest Announcements
+                            </h2>
+                        </motion.div>
+
+                        <div className="space-y-4">
+                            {announcements.map((announcement, i) => (
+                                !dismissedAnnouncements.includes(announcement.id) && (
+                                    <motion.div
+                                        key={announcement.id}
+                                        initial={{ opacity: 0, x: -20 }}
+                                        whileInView={{ opacity: 1, x: 0 }}
+                                        transition={{ delay: i * 0.1 }}
+                                        className={`p-6 rounded-lg border-l-4 flex items-start justify-between ${
+                                            announcement.type === 'success'
+                                                ? 'bg-emerald-50 border-emerald-500'
+                                                : announcement.type === 'warning'
+                                                ? 'bg-amber-50 border-amber-500'
+                                                : 'bg-blue-50 border-blue-500'
+                                        }`}
+                                    >
+                                        <div className="flex items-start gap-4 flex-1">
+                                            <span className="text-3xl mt-1">{announcement.icon}</span>
+                                            <div>
+                                                <h3 className="font-bold text-gray-900 mb-1">{announcement.title}</h3>
+                                                <p className="text-gray-700 text-sm">{announcement.message}</p>
+                                            </div>
+                                        </div>
+                                        <button
+                                            onClick={() => toggleAnnouncement(announcement.id)}
+                                            className="ml-4 text-gray-400 hover:text-gray-600 transition-colors flex-shrink-0"
+                                            aria-label="Dismiss announcement"
+                                        >
+                                            <X size={20} />
+                                        </button>
+                                    </motion.div>
+                                )
+                            ))}
+                        </div>
+
+                        {announcements.length > 0 && dismissedAnnouncements.length === announcements.length && (
+                            <motion.div
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                className="text-center py-12"
+                            >
+                                <p className="text-gray-500">No active announcements at this time.</p>
+                            </motion.div>
+                        )}
+                    </div>
+                </section>
+
                 {/* Services Grid */}
                 <section className="py-20 bg-gray-50">
-                    <div className="max-w-6xl mx-auto px-4 md:px-6">
+                    <div className="max-w-7xl mx-auto px-6">
                         <motion.h2
                             className="text-4xl md:text-5xl font-black text-center mb-16 text-gray-900"
                             initial={{ opacity: 0 }}
@@ -192,7 +185,7 @@ export default function IndexPage() {
 
                 {/* Statistics */}
                 <section className="py-20 bg-white">
-                    <div className="max-w-6xl mx-auto px-4 md:px-6">
+                    <div className="max-w-7xl mx-auto px-6">
                         <motion.div
                             initial={{ opacity: 0 }}
                             whileInView={{ opacity: 1 }}
@@ -215,7 +208,7 @@ export default function IndexPage() {
 
                 {/* Team Section */}
                 <section className="py-20 bg-gray-50">
-                    <div className="max-w-6xl mx-auto px-4 md:px-6">
+                    <div className="max-w-7xl mx-auto px-6">
                         <motion.h2
                             className="text-4xl md:text-5xl font-black text-center mb-4 text-gray-900"
                             initial={{ opacity: 0 }}
@@ -251,88 +244,6 @@ export default function IndexPage() {
                     </div>
                 </section>
 
-                {/* Testimonials */}
-                <section className="py-20 bg-white">
-                    <div className="max-w-6xl mx-auto px-4 md:px-6">
-                        <motion.h2
-                            className="text-4xl md:text-5xl font-black text-center mb-16 text-gray-900"
-                            initial={{ opacity: 0 }}
-                            whileInView={{ opacity: 1 }}
-                        >
-                            Scout Success Stories
-                        </motion.h2>
-
-                        <div className="grid md:grid-cols-3 gap-8">
-                            {testimonials.map((testimonial, i) => (
-                                <motion.div
-                                    key={i}
-                                    initial={{ opacity: 0, y: 20 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
-                                    transition={{ delay: i * 0.1 }}
-                                    className="p-8 bg-gray-50 rounded-lg border border-gray-200"
-                                >
-                                    <div className="flex gap-1 mb-4">
-                                        {[...Array(5)].map((_, j) => (
-                                            <span key={j} className="text-yellow-400">★</span>
-                                        ))}
-                                    </div>
-                                    <p className="text-gray-700 mb-6 italic">"{testimonial.quote}"</p>
-                                    <div className="flex items-center gap-3">
-                                        <div className="text-4xl">{testimonial.emoji}</div>
-                                        <div>
-                                            <p className="font-bold text-gray-900">{testimonial.name}</p>
-                                            <p className="text-sm text-gray-600">{testimonial.rank}</p>
-                                        </div>
-                                    </div>
-                                </motion.div>
-                            ))}
-                        </div>
-
-                        <div className="mt-12 text-center">
-                            <a href="/stories" className="inline-flex items-center gap-2 text-scout-green font-bold hover:text-green-700 transition-colors">
-                                Read more success stories <ArrowRight size={20} />
-                            </a>
-                        </div>
-                    </div>
-                </section>
-
-                {/* FAQ Preview */}
-                <section className="py-20 bg-gray-50">
-                    <div className="max-w-4xl mx-auto px-4 md:px-6">
-                        <motion.h2
-                            className="text-4xl md:text-5xl font-black text-center mb-16 text-gray-900"
-                            initial={{ opacity: 0 }}
-                            whileInView={{ opacity: 1 }}
-                        >
-                            Common Questions
-                        </motion.h2>
-
-                        <div className="space-y-6">
-                            {[
-                                { q: 'How do I join Troop 242?', a: 'Simply visit us on Tuesday at 7 PM or contact us via email. New scouts of all experience levels welcome!' },
-                                { q: 'What does membership cost?', a: '$25 monthly dues plus occasional activity fees. Financial assistance available for families in need.' },
-                                { q: 'What is the Eagle Scout path like?', a: '7 ranks to progress through, each with unique requirements. Takes 3-5 years with active participation.' }
-                            ].map((item, i) => (
-                                <motion.div
-                                    key={i}
-                                    initial={{ opacity: 0 }}
-                                    whileInView={{ opacity: 1 }}
-                                    className="p-6 bg-white rounded-lg border border-gray-200"
-                                >
-                                    <h3 className="font-bold text-gray-900 mb-2">{item.q}</h3>
-                                    <p className="text-gray-600">{item.a}</p>
-                                </motion.div>
-                            ))}
-                        </div>
-
-                        <div className="mt-12 text-center">
-                            <a href="/stories" className="inline-flex items-center gap-2 text-scout-green font-bold hover:text-green-700 transition-colors">
-                                View all FAQs <ArrowRight size={20} />
-                            </a>
-                        </div>
-                    </div>
-                </section>
-
                 {/* CTA Section */}
                 <section className="py-20 bg-scout-green text-white">
                     <div className="max-w-4xl mx-auto px-4 md:px-6 text-center">
@@ -356,34 +267,10 @@ export default function IndexPage() {
                     </div>
                 </section>
 
-                {/* Footer */}
-                <footer className="bg-gray-900 text-gray-400 py-12">
-                    <div className="max-w-6xl mx-auto px-4 md:px-6">
-                        <div className="grid md:grid-cols-3 gap-8 mb-8">
-                            <div>
-                                <h4 className="text-white font-bold mb-4">Troop 242</h4>
-                                <p className="text-sm">Building leaders through scouting excellence since 1994.</p>
-                            </div>
-                            <div>
-                                <h4 className="text-white font-bold mb-4">Links</h4>
-                                <ul className="space-y-2 text-sm">
-                                    <li><a href="/" className="hover:text-white transition-colors">Full Website</a></li>
-                                    <li><a href="/stories" className="hover:text-white transition-colors">Stories & FAQ</a></li>
-                                    <li><a href="https://www.scouting.org" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">BSA.org</a></li>
-                                </ul>
-                            </div>
-                            <div>
-                                <h4 className="text-white font-bold mb-4">Contact</h4>
-                                <p className="text-sm">troop242sanford@gmail.com</p>
-                                <p className="text-sm mt-2">Tuesdays 7:00 PM<br />Sanford, Florida</p>
-                            </div>
-                        </div>
-                        <div className="border-t border-gray-800 pt-8 text-center text-sm">
-                            <p>&copy; 2026 BSA Troop 242. All rights reserved.</p>
-                        </div>
-                    </div>
-                </footer>
             </main>
+
+            {/* Shared Footer */}
+            <Footer />
         </div>
     );
 }

@@ -172,7 +172,9 @@ body {
 .gap-8 {
     gap: 2rem;
 }
-
+.gap-9 {
+    gap: 5rem;
+}
 .grid {
     display: grid;
 }
@@ -218,7 +220,7 @@ body {
 }
 
 .text-6xl {
-    font-size: 3.75rem;
+    font-size: 3.15rem;
 }
 
 .font-bold {
@@ -630,6 +632,33 @@ html {
     background: #52525b;
 }
 
+/* Borderless button utility */
+.btn-borderless {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    color: inherit;
+    transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+.btn-borderless:hover {
+    opacity: 0.8;
+}
+
+.btn-borderless:active {
+    opacity: 0.6;
+}
+
+.btn-borderless:focus {
+    outline: 2px solid #52b788;
+    outline-offset: 2px;
+    border-radius: 4px;
+}
+
 /* ===== ACCESSIBILITY ===== */
 .skip-link {
     position: absolute;
@@ -777,7 +806,7 @@ html {
 /* ===== MOBILE STATS FIX ===== */
 @media (max-width: 480px) {
     .stat-value {
-        font-size: clamp(1.75rem, 8vw, 3rem);
+        font-size: clamp(1.75rem, 7vw, 3rem);
     }
 }
 
@@ -786,7 +815,6 @@ html {
     overflow-x: auto;
     overflow-y: hidden;
     scroll-behavior: smooth;
-    -webkit-overflow-scrolling: touch;
     padding: 2rem 0;
     margin: 0 -1.5rem;
     padding-left: 1.5rem;
@@ -835,18 +863,27 @@ html {
 }
 
 .rank-badge {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.75rem;
     position: relative;
-    z-index: 1;
-    min-width: -webkit-fill-available;
-    min-width: fit-content;
+    width: 120px;
+    height: 120px;
     flex-shrink: 0;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+}
+
+.rank-badge__svg {
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    top: 0;
+    left: 0;
 }
 
 .rank-badge__emoji {
+    position: absolute;
     width: 60px;
     height: 60px;
     border-radius: 50%;
@@ -858,6 +895,9 @@ html {
     font-size: 28px;
     transition: all 0.3s ease;
     cursor: pointer;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .rank-badge:hover .rank-badge__emoji {
@@ -867,20 +907,16 @@ html {
     box-shadow: 0 0 20px rgba(64, 145, 108, 0.4);
 }
 
-.rank-badge__name {
-    text-align: center;
-    font-size: 0.75rem;
+.rank-badge__text {
+    font-size: 0.7rem;
     font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
-    color: #9ca3af;
-    line-height: 1.2;
-    max-width: 70px;
-    transition: color 0.3s ease;
+    fill: #000000;
+    transition: fill 0.3s ease;
 }
 
-.rank-badge:hover .rank-badge__name {
-    color: #52b788;
+.rank-badge:hover .rank-badge__text {
+    fill: #52b788;
 }
 
 .rank-badge__arrow {
@@ -915,15 +951,24 @@ html {
         gap: 1.25rem;
     }
 
+    .rank-badge {
+        width: 110px;
+        height: 110px;
+    }
+
+    .rank-badge__svg {
+        width: 110px;
+        height: 110px;
+    }
+
     .rank-badge__emoji {
         width: 55px;
         height: 55px;
         font-size: 26px;
     }
 
-    .rank-badge__name {
-        font-size: 0.65rem;
-        max-width: 65px;
+    .rank-badge__text {
+        font-size: 0.62rem;
     }
 }
 
@@ -946,7 +991,13 @@ html {
     }
 
     .rank-badge {
-        gap: 0.75rem;
+        width: 100px;
+        height: 100px;
+    }
+
+    .rank-badge__svg {
+        width: 100px;
+        height: 100px;
     }
 
     .rank-badge__emoji {
@@ -955,9 +1006,8 @@ html {
         font-size: 24px;
     }
 
-    .rank-badge__name {
-        font-size: 0.7rem;
-        max-width: 65px;
+    .rank-badge__text {
+        font-size: 0.58rem;
     }
 
     .rank-badge__arrow {

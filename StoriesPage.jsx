@@ -1,10 +1,12 @@
-import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronDown, Star, Menu, X } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { ChevronDown, Star, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useState } from 'react';
+import Header from './Header.jsx';
+import Footer from './Footer.jsx';
 
 export default function StoriesPage() {
     const [openFAQ, setOpenFAQ] = useState(null);
-    const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
     const successStories = [
         {
@@ -88,65 +90,13 @@ export default function StoriesPage() {
 
     return (
         <div className="bg-scout min-h-screen page-container">
-            {/* Navigation */}
-            <nav className="fixed top-0 left-0 right-0 bg-navy-nav backdrop-blur border-b border-scout-nav z-50">
-                <div className="max-w-7xl mx-auto px-4 md:px-6 py-4 flex justify-between items-center">
-                    <a href="/" className="flex items-center gap-3">
-                        <div className="w-10 h-10 rounded-lg flex items-center justify-center text-2xl" style={{ background: 'linear-gradient(135deg, #3f3f46, #27272a)' }}>
-                            ⛺
-                        </div>
-                        <div>
-                            <div className="text-lg font-black italic uppercase tracking-tight text-scout-tan">CFL Troop 242</div>
-                            <div className="text-xs text-scout-tan font-semibold">Est. 1994</div>
-                        </div>
-                    </a>
-                    
-                    {/* Desktop Link */}
-                    <a href="/" className="hidden md:block text-sm font-semibold text-gray-700 hover:text-scout-green transition-colors">← Back to Home</a>
-
-                    {/* Mobile Menu Button */}
-                    <button
-                        className="md:hidden p-2 hover:bg-scout-tan/10 rounded-lg transition-colors"
-                        onClick={() => setIsMenuOpen(!isMenuOpen)}
-                        aria-label="Toggle menu"
-                        aria-expanded={isMenuOpen}
-                    >
-                        {isMenuOpen ? (
-                            <X className="w-6 h-6 text-scout-tan" />
-                        ) : (
-                            <Menu className="w-6 h-6 text-scout-tan" />
-                        )}
-                    </button>
-                </div>
-
-                {/* Mobile Menu */}
-                <AnimatePresence>
-                    {isMenuOpen && (
-                        <motion.div
-                            initial={{ opacity: 0, height: 0 }}
-                            animate={{ opacity: 1, height: 'auto' }}
-                            exit={{ opacity: 0, height: 0 }}
-                            transition={{ duration: 0.3 }}
-                            className="md:hidden border-t border-scout-nav overflow-hidden"
-                        >
-                            <div className="px-6 py-6 bg-navy-nav/95 backdrop-blur-md">
-                                <a 
-                                    href="/" 
-                                    className="block text-base font-semibold text-gray-700 hover:text-scout-green transition-colors py-4 px-2"
-                                    onClick={() => setIsMenuOpen(false)}
-                                >
-                                    ← Back to Home
-                                </a>
-                            </div>
-                        </motion.div>
-                    )}
-                </AnimatePresence>
-            </nav>
+            {/* Shared Header */}
+            <Header />
 
             <main id="main-content" className="pt-32 pb-20">
                 {/* Page Header */}
                 <section className="py-12 md:py-20">
-                    <div className="max-w-7xl mx-auto px-4 md:px-6">
+                    <div className="max-w-7xl mx-auto px-6">
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
@@ -161,9 +111,105 @@ export default function StoriesPage() {
                     </div>
                 </section>
 
+                {/* Photo Gallery Section */}
+                <section className="py-16 md:py-20 relative z-10">
+                    <div className="max-w-7xl mx-auto px-6">
+                        <motion.h2
+                            className="text-4xl md:text-5xl font-black mb-4 italic uppercase"
+                            initial={{ opacity: 0, x: -20 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                        >
+                            Photo <span className="text-scout-gradient">Gallery</span>
+                        </motion.h2>
+                        <p className="text-gray-600 mb-12">Memories from Troop 242 adventures and activities</p>
+
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.6 }}
+                            className="relative group"
+                        >
+                            {/* Carousel Container */}
+                            <div className="relative rounded-2xl overflow-hidden shadow-2xl bg-gray-800 h-96 md:h-[500px]">
+                                {/* Main Image */}
+                                <div className="w-full h-full bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center relative overflow-hidden">
+                                    <motion.div
+                                        key={currentImageIndex}
+                                        initial={{ opacity: 0 }}
+                                        animate={{ opacity: 1 }}
+                                        exit={{ opacity: 0 }}
+                                        transition={{ duration: 0.5 }}
+                                        className="absolute inset-0 flex items-center justify-center"
+                                    >
+                                        <div className="text-center">
+                                            <div className="text-8xl mb-4">
+                                                {['⛺', '🏕️', '🎯', '🥾', '🔥', '🎖️', '🌲', '⛰️'][currentImageIndex]}
+                                            </div>
+                                            <p className="text-2xl font-bold text-scout-tan mb-2">
+                                                {['Campout Adventure', 'Summer Camp', 'Skill Challenge', 'Hiking Expedition', 'Campfire Night', 'Rank Advancement', 'Nature Exploration', 'Mountain Trek'][currentImageIndex]}
+                                            </p>
+                                            <p className="text-sm text-gray-400">Click the arrows to browse more photos</p>
+                                        </div>
+                                    </motion.div>
+
+                                    {/* Navigation Buttons */}
+                                    <button
+                                        onClick={() => setCurrentImageIndex((prev) => (prev - 1 + 8) % 8)}
+                                        className="absolute left-4 top-1/2 -translate-y-1/2 z-10 p-3 rounded-full bg-black/50 hover:bg-scout-green/70 text-white transition-all hover:scale-110 backdrop-blur-sm"
+                                        aria-label="Previous image"
+                                    >
+                                        <ChevronLeft size={28} />
+                                    </button>
+                                    <button
+                                        onClick={() => setCurrentImageIndex((prev) => (prev + 1) % 8)}
+                                        className="absolute right-4 top-1/2 -translate-y-1/2 z-10 p-3 rounded-full bg-black/50 hover:bg-scout-green/70 text-white transition-all hover:scale-110 backdrop-blur-sm"
+                                        aria-label="Next image"
+                                    >
+                                        <ChevronRight size={28} />
+                                    </button>
+                                </div>
+
+                                {/* Indicator Dots */}
+                                <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2 z-20">
+                                    {[...Array(8)].map((_, i) => (
+                                        <button
+                                            key={i}
+                                            onClick={() => setCurrentImageIndex(i)}
+                                            className={`w-3 h-3 rounded-full transition-all ${
+                                                i === currentImageIndex
+                                                    ? 'bg-scout-tan w-8'
+                                                    : 'bg-white/40 hover:bg-white/70'
+                                            }`}
+                                            aria-label={`Go to photo ${i + 1}`}
+                                        />
+                                    ))}
+                                </div>
+                            </div>
+
+                            {/* Thumbnail Strip */}
+                            <div className="mt-6 flex gap-3 overflow-x-auto pb-2">
+                                {['⛺', '🏕️', '🎯', '🥾', '🔥', '🎖️', '🌲', '⛰️'].map((emoji, i) => (
+                                    <motion.button
+                                        key={i}
+                                        onClick={() => setCurrentImageIndex(i)}
+                                        whileHover={{ scale: 1.1 }}
+                                        className={`flex-shrink-0 w-20 h-20 rounded-lg flex items-center justify-center text-3xl transition-all ${
+                                            i === currentImageIndex
+                                                ? 'ring-2 ring-scout-tan bg-scout-green/20'
+                                                : 'bg-gray-800 hover:bg-gray-700 border border-gray-700'
+                                        }`}
+                                    >
+                                        {emoji}
+                                    </motion.button>
+                                ))}
+                            </div>
+                        </motion.div>
+                    </div>
+                </section>
+
                 {/* Success Stories Section */}
                 <section className="py-16 md:py-20">
-                    <div className="max-w-7xl mx-auto px-4 md:px-6">
+                    <div className="max-w-7xl mx-auto px-6">
                         <motion.h2
                             className="text-4xl md:text-5xl font-black mb-4 italic uppercase"
                             initial={{ opacity: 0, x: -20 }}
@@ -203,7 +249,7 @@ export default function StoriesPage() {
 
                 {/* FAQ Section */}
                 <section className="py-16 md:py-20">
-                    <div className="max-w-3xl mx-auto px-4 md:px-6">
+                    <div className="max-w-7xl mx-auto px-6">
                         <motion.h2
                             className="text-4xl md:text-5xl font-black mb-4 italic uppercase"
                             initial={{ opacity: 0, x: -20 }}
@@ -280,46 +326,8 @@ export default function StoriesPage() {
                 </section>
             </main>
 
-            {/* Footer */}
-            <footer className="bg-gray-900 border-t border-green-900/50 text-gray-400 py-12">
-                <div className="max-w-7xl mx-auto px-6">
-                    <div className="grid md:grid-cols-4 gap-8 mb-8">
-                        <div>
-                            <h4 className="text-white font-bold mb-4">About</h4>
-                            <ul className="space-y-2 text-sm">
-                                <li><a href="/" className="hover:text-scout-green transition-colors">Home</a></li>
-                                <li><a href="/#events" className="hover:text-scout-green transition-colors">Events</a></li>
-                                <li><a href="/#badges" className="hover:text-scout-green transition-colors">Merit Badges</a></li>
-                            </ul>
-                        </div>
-                        <div>
-                            <h4 className="text-white font-bold mb-4">Resources</h4>
-                            <ul className="space-y-2 text-sm">
-                                <li><a href="/#resources" className="hover:text-scout-green transition-colors">Forms & Documents</a></li>
-                                <li><a href="https://www.scouting.org" target="_blank" rel="noopener noreferrer" className="hover:text-scout-green transition-colors">BSA.org</a></li>
-                                <li><a href="https://scoutbook.scouting.org" target="_blank" rel="noopener noreferrer" className="hover:text-scout-green transition-colors">Scoutbook</a></li>
-                            </ul>
-                        </div>
-                        <div>
-                            <h4 className="text-white font-bold mb-4">Community</h4>
-                            <ul className="space-y-2 text-sm">
-                                <li><a href="/stories" className="hover:text-scout-green transition-colors">Scout Stories</a></li>
-                                <li><a href="/#contact" className="hover:text-scout-green transition-colors">Contact</a></li>
-                            </ul>
-                        </div>
-                        <div>
-                            <h4 className="text-white font-bold mb-4">Connect</h4>
-                            <p className="text-sm mb-3">troop242sanford@gmail.com</p>
-                            <a href="mailto:troop242sanford@gmail.com" className="inline-block px-4 py-2 rounded-lg text-sm font-bold" style={{ background: '#3f3f46' }}>
-                                Email Us
-                            </a>
-                        </div>
-                    </div>
-                    <div className="border-t border-gray-700 pt-8 text-center text-sm">
-                        <p>&copy; 2026 BSA Troop 242 - Central Florida. All rights reserved.</p>
-                    </div>
-                </div>
-            </footer>
+            {/* Shared Footer */}
+            <Footer />
         </div>
     );
 }
