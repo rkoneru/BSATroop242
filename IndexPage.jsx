@@ -183,7 +183,7 @@ export default function IndexPage() {
 
             <main id="main-content" className="pt-24">
                 {/* Hero Section - Mindoor Style */}
-                <section className="py-20 md:py-32 bg-gradient-to-b from-white/95 to-white/90 day-section">
+                <section className="py-20 md:py-32 bg-gradient-to-b from-black/95 to-black/90 day-section">
                     <div className="max-w-7xl mx-auto px-6">
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
@@ -194,7 +194,7 @@ export default function IndexPage() {
                             <h1 className="text-5xl md:text-7xl font-black mb-6 text-black leading-tight">
                                 You're Not Alone
                                 <br />
-                                <span className="text-yellow-300">Adventure Starts Here</span>
+                                <span className="text-black/70">Adventure Starts Here</span>
                             </h1>
                             <p className="text-xl text-black/70 mb-8 max-w-2xl mx-auto leading-relaxed">
                                 Join BSA Troop 242 and discover a community where scouts develop leadership, build confidence, and create lifelong friendships through adventure and outdoor experiences.

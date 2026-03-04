@@ -1100,29 +1100,40 @@ html {
 
 @keyframes sunArc {
     0% {
-        left: 8%;
-        top: 75%;
-        opacity: 0.7;
+        left: 2%;
+        top: 78%;
+        opacity: 0.8;
+        box-shadow: 0 0 60px #ffa500;
     }
     25% {
         left: 20%;
-        top: 35%;
+        top: 40%;
         opacity: 1;
+        box-shadow: 0 0 60px #ffa500;
     }
     50% {
-        left: 40%;
-        top: 10%;
+        left: 48%;
+        top: 5%;
         opacity: 1;
+        box-shadow: 0 0 60px #ffa500;
     }
     75% {
-        left: 60%;
-        top: 35%;
-        opacity: 0.9;
+        left: 76%;
+        top: 40%;
+        opacity: 1;
+        box-shadow: 0 0 60px #ffa500;
+    }
+    90% {
+        left: 92%;
+        top: 78%;
+        opacity: 1;
+        box-shadow: 0 0 60px #ffa500;
     }
     100% {
-        left: 8%;
-        top: 75%;
-        opacity: 0.7;
+        left: 2%;
+        top: 78%;
+        opacity: 0.8;
+        box-shadow: 0 0 60px #ffa500;
     }
 }
 
@@ -1283,24 +1294,34 @@ html {
 
 @keyframes moonSet {
     0% {
-        right: 8%;
-        top: 75%;
+        left: 2%;
+        top: 78%;
         opacity: 0;
+        box-shadow: 0 0 40px #f0e68c, inset -30px -10px 40px rgba(0, 0, 0, 0.3);
     }
     50% {
-        right: 30%;
-        top: 35%;
-        opacity: 0.8;
+        left: 48%;
+        top: 5%;
+        opacity: 1;
+        box-shadow: 0 0 40px #f0e68c, inset -30px -10px 40px rgba(0, 0, 0, 0.3);
     }
     75% {
-        right: 15%;
-        top: 15%;
+        left: 76%;
+        top: 40%;
         opacity: 1;
+        box-shadow: 0 0 40px #f0e68c, inset -30px -10px 40px rgba(0, 0, 0, 0.3);
+    }
+    90% {
+        left: 92%;
+        top: 78%;
+        opacity: 1;
+        box-shadow: 0 0 40px #f0e68c, inset -30px -10px 40px rgba(0, 0, 0, 0.3);
     }
     100% {
-        right: 8%;
-        top: 75%;
+        left: 2%;
+        top: 78%;
         opacity: 0;
+        box-shadow: 0 0 40px #f0e68c, inset -30px -10px 40px rgba(0, 0, 0, 0.3);
     }
 }
 
@@ -1583,7 +1604,7 @@ html {
 .day-section h4,
 .day-section h5,
 .day-section h6 {
-    color: #ffffff;
+    color: #000000;
 }
 
 .day-section p,
@@ -1591,7 +1612,7 @@ html {
 .day-section a,
 .day-section button,
 .day-section div:not([class*="bg-"]) {
-    color: #ffffff;
+    color: #1b1a1a;
 }
 
 .night-section {
