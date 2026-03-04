@@ -164,7 +164,7 @@ export default function IndexPage() {
 
             <main id="main-content" className="pt-24">
                 {/* Hero Section - Mindoor Style */}
-                <section className="py-20 md:py-32 bg-white">
+                <section className="py-20 md:py-32 bg-gradient-to-b from-white/95 to-white/90">
                     <div className="max-w-7xl mx-auto px-6">
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
@@ -206,7 +206,7 @@ export default function IndexPage() {
                 </section>
 
                 {/* Announcements Section */}
-                <section className="py-16 md:py-20 bg-gradient-to-r from-blue-50 to-indigo-50">
+                <section className="py-16 md:py-20 bg-gradient-to-r from-blue-100/80 to-indigo-100/80 backdrop-blur-sm">
                     <div className="max-w-7xl mx-auto px-6">
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
@@ -227,12 +227,12 @@ export default function IndexPage() {
                                         initial={{ opacity: 0, x: -20 }}
                                         whileInView={{ opacity: 1, x: 0 }}
                                         transition={{ delay: i * 0.1 }}
-                                        className={`p-6 rounded-lg border-l-4 flex items-start justify-between ${
+                                        className={`p-6 rounded-lg border-l-4 flex items-start justify-between backdrop-blur-sm ${
                                             announcement.type === 'success'
-                                                ? 'bg-emerald-50 border-emerald-500'
+                                                ? 'bg-emerald-50/90 border-emerald-500'
                                                 : announcement.type === 'warning'
-                                                ? 'bg-amber-50 border-amber-500'
-                                                : 'bg-blue-50 border-blue-500'
+                                                ? 'bg-amber-50/90 border-amber-500'
+                                                : 'bg-blue-50/90 border-blue-500'
                                         }`}
                                     >
                                         <div className="flex items-start gap-4 flex-1">
@@ -267,7 +267,7 @@ export default function IndexPage() {
                 </section>
 
                 {/* Services Grid */}
-                <section className="py-20 bg-gray-50">
+                <section className="py-20 bg-white/90 backdrop-blur-sm">
                     <div className="max-w-7xl mx-auto px-6">
                         <motion.h2
                             className="text-4xl md:text-5xl font-black text-center mb-16 text-gray-900"
@@ -284,7 +284,7 @@ export default function IndexPage() {
                                     initial={{ opacity: 0, y: 20 }}
                                     whileInView={{ opacity: 1, y: 0 }}
                                     transition={{ delay: i * 0.1 }}
-                                    className="p-8 bg-white rounded-lg border border-gray-200 hover:border-scout-green hover:shadow-lg transition-all"
+                                    className="p-8 bg-white/95 rounded-lg border border-gray-200/80 hover:border-scout-green hover:shadow-lg transition-all backdrop-blur-sm"
                                 >
                                     <div className="text-5xl mb-4">{service.emoji}</div>
                                     <h3 className="text-2xl font-bold text-gray-900 mb-3">{service.title}</h3>
@@ -296,7 +296,7 @@ export default function IndexPage() {
                 </section>
 
                 {/* Statistics */}
-                <section className="py-20 bg-white">
+                <section className="py-20 bg-white/90 backdrop-blur-sm">
                     <div className="max-w-7xl mx-auto px-6">
                         <motion.div
                             initial={{ opacity: 0 }}
@@ -319,7 +319,7 @@ export default function IndexPage() {
                 </section>
 
                 {/* Team Section */}
-                <section className="py-20 bg-gray-50">
+                <section className="py-20 bg-gradient-to-b from-gray-100/80 to-white/80 backdrop-blur-sm">
                     <div className="max-w-7xl mx-auto px-6">
                         <motion.h2
                             className="text-4xl md:text-5xl font-black text-center mb-4 text-gray-900"
@@ -357,7 +357,7 @@ export default function IndexPage() {
                 </section>
 
                 {/* CTA Section */}
-                <section className="py-20 bg-scout-green text-white">
+                <section className="py-20 bg-gradient-to-r from-scout-green to-emerald-600 text-white">
                     <div className="max-w-4xl mx-auto px-4 md:px-6 text-center">
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
