@@ -1375,3 +1375,45 @@ html {
     position: relative;
     z-index: 10;
 }
+
+/* Day and Night Section Text Colors */
+.day-section {
+    color: #ffffff;
+}
+
+.day-section h1,
+.day-section h2,
+.day-section h3,
+.day-section h4,
+.day-section h5,
+.day-section h6 {
+    color: #ffffff;
+}
+
+.day-section p,
+.day-section span,
+.day-section a,
+.day-section button,
+.day-section div:not([class*="bg-"]) {
+    color: #ffffff;
+}
+
+.night-section {
+    color: #ffffff;
+}
+
+.night-section h1,
+.night-section h2,
+.night-section h3,
+.night-section h4,
+.night-section h5,
+.night-section h6 {
+    color: #ffffff;
+}
+
+.night-section p,
+.night-section span,
+.night-section a,
+.night-section button {
+    color: #ffffff;
+}

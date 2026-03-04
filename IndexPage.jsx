@@ -164,7 +164,7 @@ export default function IndexPage() {
 
             <main id="main-content" className="pt-24">
                 {/* Hero Section - Mindoor Style */}
-                <section className="py-20 md:py-32 bg-gradient-to-b from-white/95 to-white/90">
+                <section className="py-20 md:py-32 bg-gradient-to-b from-white/95 to-white/90 day-section">
                     <div className="max-w-7xl mx-auto px-6">
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
@@ -172,20 +172,20 @@ export default function IndexPage() {
                             transition={{ duration: 0.8 }}
                             className="text-center"
                         >
-                            <h1 className="text-5xl md:text-7xl font-black mb-6 text-gray-900 leading-tight">
+                            <h1 className="text-5xl md:text-7xl font-black mb-6 text-white leading-tight">
                                 You're Not Alone
                                 <br />
-                                <span className="text-scout-green">Adventure Starts Here</span>
+                                <span className="text-yellow-300">Adventure Starts Here</span>
                             </h1>
-                            <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto leading-relaxed">
+                            <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto leading-relaxed">
                                 Join BSA Troop 242 and discover a community where scouts develop leadership, build confidence, and create lifelong friendships through adventure and outdoor experiences.
                             </p>
 
                             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-                                <a href="mailto:troop242sanford@gmail.com" className="px-8 py-4 border-2 border-gray-300 text-gray-900 font-bold rounded-lg hover:border-gray-400 transition-all">
+                                <a href="mailto:troop242sanford@gmail.com" className="px-8 py-4 border-2 border-white text-white font-bold rounded-lg hover:bg-white/10 transition-all">
                                     Join Us Today
                                 </a>
-                                <a href="/" className="px-8 py-4 border-2 border-gray-300 text-gray-900 font-bold rounded-lg hover:border-gray-400 transition-all">
+                                <a href="/" className="px-8 py-4 border-2 border-white text-white font-bold rounded-lg hover:bg-white/10 transition-all">
                                     Learn More
                                 </a>
                             </div>
@@ -194,27 +194,27 @@ export default function IndexPage() {
                             <div className="flex justify-center items-center gap-2">
                                 <div className="flex -space-x-4">
                                     {['🦅', '❤️', '🌟', '🥇', '🎖️'].map((emoji, i) => (
-                                        <div key={i} className="w-12 h-12 rounded-full bg-scout-green/20 flex items-center justify-center text-xl border-2 border-white">
+                                        <div key={i} className="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center text-xl border-2 border-white">
                                             {emoji}
                                         </div>
                                     ))}
                                 </div>
-                                <span className="text-sm text-gray-600 ml-4">Trusted by 50+ scouts and families</span>
+                                <span className="text-sm text-white/80 ml-4">Trusted by 50+ scouts and families</span>
                             </div>
                         </motion.div>
                     </div>
                 </section>
 
                 {/* Announcements Section */}
-                <section className="py-16 md:py-20 bg-gradient-to-r from-blue-100/80 to-indigo-100/80 backdrop-blur-sm">
+                <section className="py-16 md:py-20 bg-gradient-to-r from-blue-100/80 to-indigo-100/80 backdrop-blur-sm day-section">
                     <div className="max-w-7xl mx-auto px-6">
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             className="flex items-center gap-3 mb-8"
                         >
-                            <Bell className="w-8 h-8 text-blue-600" />
-                            <h2 className="text-3xl md:text-4xl font-black text-gray-900">
+                            <Bell className="w-8 h-8 text-white" />
+                            <h2 className="text-3xl md:text-4xl font-black text-white">
                                 Latest Announcements
                             </h2>
                         </motion.div>
@@ -229,22 +229,22 @@ export default function IndexPage() {
                                         transition={{ delay: i * 0.1 }}
                                         className={`p-6 rounded-lg border-l-4 flex items-start justify-between backdrop-blur-sm ${
                                             announcement.type === 'success'
-                                                ? 'bg-emerald-50/90 border-emerald-500'
+                                                ? 'bg-emerald-500/90 border-emerald-300'
                                                 : announcement.type === 'warning'
-                                                ? 'bg-amber-50/90 border-amber-500'
-                                                : 'bg-blue-50/90 border-blue-500'
+                                                ? 'bg-amber-500/90 border-amber-300'
+                                                : 'bg-blue-500/90 border-blue-300'
                                         }`}
                                     >
                                         <div className="flex items-start gap-4 flex-1">
                                             <span className="text-3xl mt-1">{announcement.icon}</span>
                                             <div>
-                                                <h3 className="font-bold text-gray-900 mb-1">{announcement.title}</h3>
-                                                <p className="text-gray-700 text-sm">{announcement.message}</p>
+                                                <h3 className="font-bold text-white mb-1">{announcement.title}</h3>
+                                                <p className="text-white/90 text-sm">{announcement.message}</p>
                                             </div>
                                         </div>
                                         <button
                                             onClick={() => toggleAnnouncement(announcement.id)}
-                                            className="ml-4 text-gray-400 hover:text-gray-600 transition-colors flex-shrink-0"
+                                            className="ml-4 text-white/60 hover:text-white transition-colors flex-shrink-0"
                                             aria-label="Dismiss announcement"
                                         >
                                             <X size={20} />
@@ -267,10 +267,10 @@ export default function IndexPage() {
                 </section>
 
                 {/* Services Grid */}
-                <section className="py-20 bg-white/90 backdrop-blur-sm">
+                <section className="py-20 bg-white/90 backdrop-blur-sm day-section">
                     <div className="max-w-7xl mx-auto px-6">
                         <motion.h2
-                            className="text-4xl md:text-5xl font-black text-center mb-16 text-gray-900"
+                            className="text-4xl md:text-5xl font-black text-center mb-16 text-white"
                             initial={{ opacity: 0 }}
                             whileInView={{ opacity: 1 }}
                         >
@@ -284,11 +284,11 @@ export default function IndexPage() {
                                     initial={{ opacity: 0, y: 20 }}
                                     whileInView={{ opacity: 1, y: 0 }}
                                     transition={{ delay: i * 0.1 }}
-                                    className="p-8 bg-white/95 rounded-lg border border-gray-200/80 hover:border-scout-green hover:shadow-lg transition-all backdrop-blur-sm"
+                                    className="p-8 bg-white/95 rounded-lg border border-white/50 hover:border-yellow-300 hover:shadow-lg transition-all backdrop-blur-sm"
                                 >
                                     <div className="text-5xl mb-4">{service.emoji}</div>
-                                    <h3 className="text-2xl font-bold text-gray-900 mb-3">{service.title}</h3>
-                                    <p className="text-gray-600">{service.description}</p>
+                                    <h3 className="text-2xl font-bold text-white mb-3">{service.title}</h3>
+                                    <p className="text-white/80">{service.description}</p>
                                 </motion.div>
                             ))}
                         </div>
@@ -296,7 +296,7 @@ export default function IndexPage() {
                 </section>
 
                 {/* Statistics */}
-                <section className="py-20 bg-white/90 backdrop-blur-sm">
+                <section className="py-20 bg-white/90 backdrop-blur-sm day-section">
                     <div className="max-w-7xl mx-auto px-6">
                         <motion.div
                             initial={{ opacity: 0 }}
@@ -310,8 +310,8 @@ export default function IndexPage() {
                                     whileInView={{ opacity: 1, y: 0 }}
                                     transition={{ delay: i * 0.1 }}
                                 >
-                                    <div className="text-5xl font-black text-scout-green mb-3">{stat.number}</div>
-                                    <div className="text-gray-600 font-semibold">{stat.label}</div>
+                                    <div className="text-5xl font-black text-yellow-300 mb-3">{stat.number}</div>
+                                    <div className="text-white/90 font-semibold">{stat.label}</div>
                                 </motion.div>
                             ))}
                         </motion.div>
@@ -319,16 +319,16 @@ export default function IndexPage() {
                 </section>
 
                 {/* Team Section */}
-                <section className="py-20 bg-gradient-to-b from-gray-100/80 to-white/80 backdrop-blur-sm">
+                <section className="py-20 bg-gradient-to-b from-gray-100/80 to-white/80 backdrop-blur-sm day-section">
                     <div className="max-w-7xl mx-auto px-6">
                         <motion.h2
-                            className="text-4xl md:text-5xl font-black text-center mb-4 text-gray-900"
+                            className="text-4xl md:text-5xl font-black text-center mb-4 text-white"
                             initial={{ opacity: 0 }}
                             whileInView={{ opacity: 1 }}
                         >
                             Our Leadership Team
                         </motion.h2>
-                        <p className="text-center text-gray-600 text-lg mb-16 max-w-2xl mx-auto">
+                        <p className="text-center text-white/80 text-lg mb-16 max-w-2xl mx-auto">
                             Experienced Scout Masters and volunteers dedicated to guiding the next generation of leaders
                         </p>
 
@@ -345,11 +345,11 @@ export default function IndexPage() {
                                     transition={{ delay: i * 0.1 }}
                                     className="text-center"
                                 >
-                                    <div className="w-32 h-32 rounded-full bg-scout-green/20 flex items-center justify-center text-6xl mx-auto mb-4">
+                                    <div className="w-32 h-32 rounded-full bg-white/20 flex items-center justify-center text-6xl mx-auto mb-4">
                                         {member.emoji}
                                     </div>
-                                    <h3 className="text-xl font-bold text-gray-900 mb-1">{member.role}</h3>
-                                    <p className="text-gray-600">{member.name}</p>
+                                    <h3 className="text-xl font-bold text-white mb-1">{member.role}</h3>
+                                    <p className="text-white/80">{member.name}</p>
                                 </motion.div>
                             ))}
                         </div>
@@ -368,11 +368,11 @@ export default function IndexPage() {
                                 We meet every Tuesday at 7:00 PM. New scouts always welcome.
                             </p>
                             <div>
-                                <button onClick={() => window.open('https://calendar.google.com/calendar/r?cid=k11l4b9od26qdlquf6fth7stbg%40group.calendar.google.com', '_blank')} className="px-8 py-4 border-2 border-gray-400 text-gray-400 font-bold rounded-lg hover:text-scout-green transition-all btn-borderless">Calendar</button>
-                            </div> 
-                              
+                                <button onClick={() => window.open('https://calendar.google.com/calendar/r?cid=k11l4b9od26qdlquf6fth7stbg%40group.calendar.google.com', '_blank')} className="px-8 py-4 border-2 border-white text-white font-bold rounded-lg hover:bg-white/10 transition-all btn-borderless">Calendar</button>
+                            </div>
+
                             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-                                <a href="mailto:troop242sanford@gmail.com" className="px-8 py-4 border-2 border-gray-400 text-gray-400 font-bold rounded-lg hover:text-scout-green transition-all">
+                                <a href="mailto:troop242sanford@gmail.com" className="px-8 py-4 border-2 border-white text-white font-bold rounded-lg hover:bg-white/10 transition-all">
                                     Mail Us for any inquiries
                                 </a>
                                
