@@ -1047,8 +1047,331 @@ html {
         font-size: 0.65rem;
         max-width: 60px;
     }
+}
 
-    .rank-badge__arrow {
-        display: none;
+/* ===== DAY TO NIGHT TRANSITION BACKGROUND ===== */
+.day-night-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(90deg, #87ceeb 0%, #e0f2ff 25%, #1a1a2e 75%, #0f0f1e 100%);
+    z-index: 0;
+    overflow: hidden;
+}
+
+.background-content {
+    position: relative;
+    z-index: 1;
+}
+
+/* DAY SIDE - LEFT */
+.day-side {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(180deg, #87ceeb 0%, #e0f0ff 100%);
+    overflow: hidden;
+}
+
+/* Sun on day side */
+.sun {
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    background: radial-gradient(circle, #ffd700, #ffa500);
+    border-radius: 50%;
+    top: 15%;
+    right: 10%;
+    box-shadow: 0 0 60px #ffa500;
+    z-index: 1;
+}
+
+/* Trees on day side */
+.tree-day {
+    position: absolute;
+    bottom: 0;
+}
+
+.tree-day-trunk {
+    width: 20px;
+    height: 80px;
+    background: #8b6914;
+    margin: 0 auto;
+}
+
+.tree-day-foliage {
+    width: 100px;
+    height: 100px;
+    background: #228b22;
+    border-radius: 50% 50% 45% 45%;
+    margin: 0 auto -10px;
+    position: relative;
+}
+
+/* Deer on day side */
+.deer-day {
+    position: absolute;
+    bottom: 120px;
+}
+
+.deer-body {
+    width: 60px;
+    height: 40px;
+    background: #8b4513;
+    border-radius: 50%;
+    position: relative;
+}
+
+.deer-head {
+    width: 30px;
+    height: 35px;
+    background: #8b4513;
+    border-radius: 50% 50% 40% 40%;
+    position: absolute;
+    left: 45px;
+    top: 5px;
+}
+
+.deer-ear {
+    width: 8px;
+    height: 20px;
+    background: #8b4513;
+    position: absolute;
+    top: -5px;
+    border-radius: 50%;
+}
+
+.deer-ear-left {
+    left: 8px;
+}
+
+.deer-ear-right {
+    right: 8px;
+}
+
+.deer-eye {
+    width: 3px;
+    height: 3px;
+    background: #000;
+    position: absolute;
+    top: 15px;
+    right: 8px;
+    border-radius: 50%;
+}
+
+.deer-leg {
+    width: 6px;
+    height: 35px;
+    background: #5c2e0f;
+    position: absolute;
+    bottom: -35px;
+}
+
+.deer-leg-1 {
+    left: 15px;
+}
+
+.deer-leg-2 {
+    left: 35px;
+}
+
+.deer-leg-3 {
+    right: 35px;
+}
+
+.deer-leg-4 {
+    right: 15px;
+}
+
+/* Tents on day side */
+.tent-day {
+    position: absolute;
+    bottom: 100px;
+}
+
+.tent-canvas {
+    width: 0;
+    height: 0;
+    border-left: 30px solid transparent;
+    border-right: 30px solid transparent;
+    border-bottom: 50px solid #ff6347;
+    position: relative;
+}
+
+.tent-pole {
+    width: 3px;
+    height: 55px;
+    background: #8b4513;
+    position: absolute;
+    left: 28.5px;
+    top: -55px;
+}
+
+.tent-flag {
+    width: 20px;
+    height: 12px;
+    background: #1a5490;
+    position: absolute;
+    left: 31px;
+    top: -60px;
+}
+
+/* NIGHT SIDE - RIGHT */
+.night-side {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(180deg, #0f0f1e 0%, #1a1a2e 100%);
+    overflow: hidden;
+}
+
+/* Moon on night side */
+.moon {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background: radial-gradient(circle, #f0e68c, #daa520);
+    border-radius: 50%;
+    top: 10%;
+    left: 10%;
+    box-shadow: 0 0 40px #f0e68c, inset -30px -10px 40px rgba(0, 0, 0, 0.3);
+    z-index: 1;
+}
+
+/* Stars on night side */
+.star {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: #fff;
+    border-radius: 50%;
+    opacity: 0.8;
+    animation: twinkle 3s infinite;
+}
+
+@keyframes twinkle {
+    0%, 100% {
+        opacity: 0.3;
     }
+    50% {
+        opacity: 1;
+    }
+}
+
+/* Night trees */
+.tree-night {
+    position: absolute;
+    bottom: 0;
+}
+
+.tree-night-trunk {
+    width: 18px;
+    height: 70px;
+    background: #1a1a1a;
+    margin: 0 auto;
+}
+
+.tree-night-foliage {
+    width: 90px;
+    height: 90px;
+    background: #1a3a1a;
+    border-radius: 50% 50% 45% 45%;
+    margin: 0 auto -5px;
+    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+/* Night tents with scouts */
+.tent-night {
+    position: absolute;
+    bottom: 90px;
+}
+
+.tent-night-canvas {
+    width: 0;
+    height: 0;
+    border-left: 28px solid transparent;
+    border-right: 28px solid transparent;
+    border-bottom: 45px solid #2c2c2c;
+    position: relative;
+    box-shadow: inset 0 5px 15px rgba(255, 100, 0, 0.3);
+}
+
+.tent-light {
+    position: absolute;
+    width: 35px;
+    height: 35px;
+    background: radial-gradient(circle, rgba(255, 165, 0, 0.8), rgba(255, 165, 0, 0));
+    top: 15px;
+    left: 10px;
+    border-radius: 50%;
+    z-index: 2;
+}
+
+/* Scouts under night sky */
+.scout-group {
+    position: absolute;
+    bottom: 130px;
+    display: flex;
+    gap: 40px;
+}
+
+.scout {
+    width: 25px;
+    height: 35px;
+    position: relative;
+}
+
+.scout-head {
+    width: 10px;
+    height: 10px;
+    background: #d4a574;
+    border-radius: 50%;
+    margin: 0 auto;
+}
+
+.scout-body {
+    width: 15px;
+    height: 15px;
+    background: #8b0000;
+    margin: 3px auto;
+    border-radius: 3px;
+}
+
+.scout-legs {
+    width: 12px;
+    height: 8px;
+    margin: 0 auto;
+    display: flex;
+    gap: 3px;
+}
+
+.scout-leg {
+    width: 4px;
+    height: 8px;
+    background: #333;
+    border-radius: 2px;
+}
+
+/* Transition overlay */
+.transition-gradient {
+    position: absolute;
+    left: 45%;
+    top: 0;
+    width: 10%;
+    height: 100%;
+    background: linear-gradient(90deg, rgba(135, 206, 235, 0) 0%, rgba(100, 150, 200, 0.1) 50%, rgba(0, 0, 0, 0) 100%);
+    z-index: 2;
+    pointer-events: none;
+}
+
+/* Main content sits on top */
+.page-container {
+    position: relative;
+    z-index: 10;
 }

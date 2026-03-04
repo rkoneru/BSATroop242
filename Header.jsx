@@ -35,9 +35,9 @@ export default function Header() {
     // Simplified navigation structure for horizontal layout
     const navItems = [
         { label: 'Home', href: '/' },
-        { label: 'About', href: '/about' },
-        { label: 'Stories', href: '/stories' },
         { label: 'Calendar', href: '/calendar' },
+        { label: 'Stories', href: '/stories' },
+        { label: 'About', href: '/about' },
        /*  {
             label: 'Activities',
             children: [
@@ -47,7 +47,7 @@ export default function Header() {
                 { label: 'Resources', href: '#resources', anchor: true }
             ]
         }, */
-        { label: 'Contact', href: '#contact', anchor: true },
+        // { label: 'Contact', href: '#contact', anchor: true },
         { label: 'Scoutbook', href: 'https://scoutbook.scouting.org/', external: true }
     ];
 

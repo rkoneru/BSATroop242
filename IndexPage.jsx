@@ -22,7 +22,7 @@ export default function IndexPage() {
         },
         {
             title: 'Merit Badges',
-            description: 'Earn 13 Eagle-required badges across diverse skill areas and interests',
+            description: 'Earn 13 Eagle-required badges and more across diverse skill areas and interests',
             emoji: '🎖️'
         },
         {
@@ -46,9 +46,121 @@ export default function IndexPage() {
     };
 
     return (
-        <div className="bg-white min-h-screen page-container">
-            {/* Shared Header */}
-            <Header />
+        <div className="min-h-screen">
+            {/* Day to Night Transition Background */}
+            <div className="day-night-background">
+                {/* Day Side - Left */}
+                <div className="day-side">
+                    {/* Sun */}
+                    <div className="sun"></div>
+
+                    {/* Trees */}
+                    <div className="tree-day" style={{ left: '15%', bottom: '0' }}>
+                        <div className="tree-day-foliage"></div>
+                        <div className="tree-day-trunk"></div>
+                    </div>
+                    <div className="tree-day" style={{ left: '35%', bottom: '0' }}>
+                        <div className="tree-day-foliage"></div>
+                        <div className="tree-day-trunk"></div>
+                    </div>
+
+                    {/* Deer */}
+                    <div className="deer-day" style={{ left: '20%' }}>
+                        <div className="deer-body">
+                            <div className="deer-head">
+                                <div className="deer-ear deer-ear-left"></div>
+                                <div className="deer-ear deer-ear-right"></div>
+                                <div className="deer-eye"></div>
+                            </div>
+                            <div className="deer-leg deer-leg-1"></div>
+                            <div className="deer-leg deer-leg-2"></div>
+                            <div className="deer-leg deer-leg-3"></div>
+                            <div className="deer-leg deer-leg-4"></div>
+                        </div>
+                    </div>
+
+                    {/* Tents - Day */}
+                    <div className="tent-day" style={{ left: '50%', transform: 'translateX(-50%)' }}>
+                        <div className="tent-canvas">
+                            <div className="tent-pole"></div>
+                            <div className="tent-flag"></div>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Night Side - Right */}
+                <div className="night-side">
+                    {/* Moon */}
+                    <div className="moon"></div>
+
+                    {/* Stars */}
+                    {[...Array(15)].map((_, i) => (
+                        <div
+                            key={`star-${i}`}
+                            className="star"
+                            style={{
+                                left: `${Math.random() * 100}%`,
+                                top: `${Math.random() * 60}%`,
+                                animation: `twinkle ${2 + Math.random() * 2}s infinite`,
+                                animationDelay: `${Math.random() * 3}s`
+                            }}
+                        ></div>
+                    ))}
+
+                    {/* Night Trees */}
+                    <div className="tree-night" style={{ right: '15%', bottom: '0' }}>
+                        <div className="tree-night-foliage"></div>
+                        <div className="tree-night-trunk"></div>
+                    </div>
+                    <div className="tree-night" style={{ right: '35%', bottom: '0' }}>
+                        <div className="tree-night-foliage"></div>
+                        <div className="tree-night-trunk"></div>
+                    </div>
+
+                    {/* Night Tents with Light */}
+                    <div className="tent-night" style={{ left: '50%', transform: 'translateX(-50%)' }}>
+                        <div className="tent-night-canvas">
+                            <div className="tent-light"></div>
+                        </div>
+                    </div>
+
+                    {/* Scouts under stars */}
+                    <div className="scout-group" style={{ left: '50%', transform: 'translateX(-50%)' }}>
+                        <div className="scout">
+                            <div className="scout-head"></div>
+                            <div className="scout-body"></div>
+                            <div className="scout-legs">
+                                <div className="scout-leg"></div>
+                                <div className="scout-leg"></div>
+                            </div>
+                        </div>
+                        <div className="scout">
+                            <div className="scout-head"></div>
+                            <div className="scout-body"></div>
+                            <div className="scout-legs">
+                                <div className="scout-leg"></div>
+                                <div className="scout-leg"></div>
+                            </div>
+                        </div>
+                        <div className="scout">
+                            <div className="scout-head"></div>
+                            <div className="scout-body"></div>
+                            <div className="scout-legs">
+                                <div className="scout-leg"></div>
+                                <div className="scout-leg"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Transition Gradient */}
+                <div className="transition-gradient"></div>
+            </div>
+
+            {/* Content Layer */}
+            <div className="background-content">
+                {/* Shared Header */}
+                <Header />
 
             <main id="main-content" className="pt-24">
                 {/* Hero Section - Mindoor Style */}
@@ -255,13 +367,15 @@ export default function IndexPage() {
                             <p className="text-xl text-green-100 mb-8">
                                 We meet every Tuesday at 7:00 PM. New scouts always welcome.
                             </p>
-                            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                                <a href="mailto:troop242sanford@gmail.com" className="px-8 py-4 border-2 border-white text-white font-bold rounded-lg hover:bg-white/10 transition-all">
-                                    Contact Us
+                            <div>
+                                <button onClick={() => window.open('https://calendar.google.com/calendar/r?cid=k11l4b9od26qdlquf6fth7stbg%40group.calendar.google.com', '_blank')} className="px-8 py-4 border-2 border-gray-400 text-gray-400 font-bold rounded-lg hover:text-scout-green transition-all btn-borderless">Calendar</button>
+                            </div> 
+                              
+                            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+                                <a href="mailto:troop242sanford@gmail.com" className="px-8 py-4 border-2 border-gray-400 text-gray-400 font-bold rounded-lg hover:text-scout-green transition-all">
+                                    Mail Us for any inquiries
                                 </a>
-                                <a href="/" className="px-8 py-4 border-2 border-white text-white font-bold rounded-lg hover:bg-white/10 transition-all">
-                                    Full Website
-                                </a>
+                               
                             </div>
                         </motion.div>
                     </div>
@@ -269,8 +383,9 @@ export default function IndexPage() {
 
             </main>
 
-            {/* Shared Footer */}
-            <Footer />
+                {/* Shared Footer */}
+                <Footer />
+            </div>
         </div>
     );
 }

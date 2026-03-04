@@ -37,17 +37,17 @@ export default function Footer() {
                             <div className="text-2xl">⛺</div>
                             <div className="font-black italic uppercase text-scout-tan">BSA Troop 242</div>
                         </div>
-                        <p className="text-sm text-gray-400">Building leaders through outdoor adventure and community service since 1996.</p>
+                        <p className="text-sm text-gray-200">Empowering youth through outdoor adventure, leadership development, and community service. Building the leaders of tomorrow since 1996.</p>
                     </div>
 
                     {/* Navigation Row */}
                     <div>
-                        <h3 className="font-bold text-gray-200 mb-6">Navigation</h3>
+                        <h3 className="font-bold text-gray-200 mb-6">Quick Links</h3>
                         <div className="flex flex-wrap items-center gap-6">
                             <button onClick={() => navigate('/')} className="text-sm text-gray-400 hover:text-scout-green transition-colors btn-borderless">Home</button>
-                            <button onClick={() => navigate('/about')} className="text-sm text-gray-400 hover:text-scout-green transition-colors btn-borderless">About</button>
-                            <button onClick={() => navigate('/stories')} className="text-sm text-gray-400 hover:text-scout-green transition-colors btn-borderless">Stories</button>
                             <button onClick={() => navigate('/calendar')} className="text-sm text-gray-400 hover:text-scout-green transition-colors btn-borderless">Calendar</button>
+                            <button onClick={() => navigate('/stories')} className="text-sm text-gray-400 hover:text-scout-green transition-colors btn-borderless">Stories</button>
+                            <button onClick={() => navigate('/about')} className="text-sm text-gray-400 hover:text-scout-green transition-colors btn-borderless">About</button>
                             <button onClick={(e) => handleAnchorClick(e, '#events')} className="text-sm text-gray-400 hover:text-scout-green transition-colors btn-borderless">Events</button>
                             {/* <button onClick={(e) => handleAnchorClick(e, '#contact')} className="text-sm text-gray-400 hover:text-scout-green transition-colors btn-borderless">Contact</button> */}
                         </div>
@@ -74,7 +74,7 @@ export default function Footer() {
 
                 {/* Copyright */}
                 <div className="border-t border-scout-green/20 pt-8 text-center">
-                    <p className="text-sm text-gray-400">
+                    <p className="text-sm text-gray-200">
                         © {currentYear} BSA Troop 242 Sanford. All rights reserved.
                     </p>
                 </div>
