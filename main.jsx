@@ -8,7 +8,7 @@ import './index.css'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <BrowserRouter>
+    <BrowserRouter basename="/BSATroop242">
       <Routes>
         <Route path="/" element={<App />} />
         <Route path="/index" element={<IndexPage />} />
