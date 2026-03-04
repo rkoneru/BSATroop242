@@ -97,17 +97,17 @@ export default function IndexPage() {
                             transition={{ duration: 0.3 }}
                             className="md:hidden border-t border-gray-200 overflow-hidden"
                         >
-                            <div className="px-6 py-4 space-y-4 bg-white">
+                            <div className="px-6 py-6 bg-white">
                                 <a 
                                     href="/" 
-                                    className="block text-sm text-gray-600 hover:text-gray-900 transition-colors py-2"
+                                    className="block text-base font-semibold text-gray-600 hover:text-gray-900 transition-colors py-3 px-2 border-b border-gray-200"
                                     onClick={() => setIsMenuOpen(false)}
                                 >
                                     More
                                 </a>
                                 <a 
                                     href="/stories" 
-                                    className="block text-sm text-gray-600 hover:text-gray-900 transition-colors py-2"
+                                    className="block text-base font-semibold text-gray-600 hover:text-gray-900 transition-colors py-3 px-2"
                                     onClick={() => setIsMenuOpen(false)}
                                 >
                                     Stories & FAQ

@@ -841,6 +841,7 @@ html {
     gap: 0.75rem;
     position: relative;
     z-index: 1;
+    min-width: -webkit-fill-available;
     min-width: fit-content;
     flex-shrink: 0;
 }

@@ -183,45 +183,45 @@ function App() {
                             transition={{ duration: 0.3 }}
                             className="md:hidden border-t border-scout-nav overflow-hidden"
                         >
-                            <div className="px-6 py-4 space-y-4 bg-navy-nav/95 backdrop-blur-md">
+                            <div className="px-6 py-6 bg-navy-nav/95 backdrop-blur-md">
                                 <a 
                                     href="#events" 
-                                    className="block text-sm font-semibold text-gray-700 hover:text-scout-green transition-colors py-2"
+                                    className="block text-base font-semibold text-gray-700 hover:text-scout-green transition-colors py-3 px-2 border-b border-gray-200/20"
                                     onClick={() => setIsMenuOpen(false)}
                                 >
                                     Events
                                 </a>
                                 <a 
                                     href="#tracker" 
-                                    className="block text-sm font-semibold text-gray-700 hover:text-scout-green transition-colors py-2"
+                                    className="block text-base font-semibold text-gray-700 hover:text-scout-green transition-colors py-3 px-2 border-b border-gray-200/20"
                                     onClick={() => setIsMenuOpen(false)}
                                 >
                                     Progress
                                 </a>
                                 <a 
                                     href="#badges" 
-                                    className="block text-sm font-semibold text-gray-700 hover:text-scout-green transition-colors py-2"
+                                    className="block text-base font-semibold text-gray-700 hover:text-scout-green transition-colors py-3 px-2 border-b border-gray-200/20"
                                     onClick={() => setIsMenuOpen(false)}
                                 >
                                     Badges
                                 </a>
                                 <a 
                                     href="#features" 
-                                    className="block text-sm font-semibold text-gray-700 hover:text-scout-green transition-colors py-2"
+                                    className="block text-base font-semibold text-gray-700 hover:text-scout-green transition-colors py-3 px-2 border-b border-gray-200/20"
                                     onClick={() => setIsMenuOpen(false)}
                                 >
                                     Why Us
                                 </a>
                                 <a 
                                     href="#resources" 
-                                    className="block text-sm font-semibold text-gray-700 hover:text-scout-green transition-colors py-2"
+                                    className="block text-base font-semibold text-gray-700 hover:text-scout-green transition-colors py-3 px-2 border-b border-gray-200/20"
                                     onClick={() => setIsMenuOpen(false)}
                                 >
                                     Resources
                                 </a>
                                 <a 
                                     href="#contact" 
-                                    className="block text-sm font-semibold text-gray-700 hover:text-scout-green transition-colors py-2"
+                                    className="block text-base font-semibold text-gray-700 hover:text-scout-green transition-colors py-3 px-2 border-b border-gray-200/20"
                                     onClick={() => setIsMenuOpen(false)}
                                 >
                                     Contact
@@ -230,7 +230,7 @@ function App() {
                                     href="https://scoutbook.scouting.org/" 
                                     target="_blank" 
                                     rel="noopener noreferrer" 
-                                    className="block text-sm font-semibold text-gray-700 hover:text-scout-green transition-colors py-2"
+                                    className="block text-base font-semibold text-gray-700 hover:text-scout-green transition-colors py-3 px-2"
                                     onClick={() => setIsMenuOpen(false)}
                                 >
                                     Scoutbook

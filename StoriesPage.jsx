@@ -129,10 +129,10 @@ export default function StoriesPage() {
                             transition={{ duration: 0.3 }}
                             className="md:hidden border-t border-scout-nav overflow-hidden"
                         >
-                            <div className="px-6 py-4 bg-navy-nav/95 backdrop-blur-md">
+                            <div className="px-6 py-6 bg-navy-nav/95 backdrop-blur-md">
                                 <a 
                                     href="/" 
-                                    className="block text-sm font-semibold text-gray-700 hover:text-scout-green transition-colors py-2"
+                                    className="block text-base font-semibold text-gray-700 hover:text-scout-green transition-colors py-4 px-2"
                                     onClick={() => setIsMenuOpen(false)}
                                 >
                                     ← Back to Home
