@@ -55,17 +55,17 @@ export default function IndexPage() {
                     <div className="sun"></div>
 
                     {/* Trees - Day side left */}
-                    <div className="tree-day" style={{ left: '8%', bottom: '0' }}>
+                    <div className="tree-day" style={{ left: '6%', bottom: '0' }}>
                         <div className="tree-day-foliage"></div>
                         <div className="tree-day-trunk"></div>
                     </div>
-                    <div className="tree-day" style={{ left: '25%', bottom: '0' }}>
+                    <div className="tree-day" style={{ left: '18%', bottom: '0' }}>
                         <div className="tree-day-foliage"></div>
                         <div className="tree-day-trunk"></div>
                     </div>
 
                     {/* Deer - Day side */}
-                    <div className="deer-day" style={{ left: '15%', bottom: '120px' }}>
+                    <div className="deer-day" style={{ left: '12%', bottom: '120px' }}>
                         <div className="deer-body">
                             <div className="deer-head">
                                 <div className="deer-ear deer-ear-left"></div>
@@ -80,10 +80,31 @@ export default function IndexPage() {
                     </div>
 
                     {/* Tents - Day side center */}
-                    <div className="tent-day" style={{ left: '35%', bottom: '100px' }}>
+                    <div className="tent-day" style={{ left: '45%', bottom: '100px' }}>
                         <div className="tent-canvas">
                             <div className="tent-pole"></div>
                             <div className="tent-flag"></div>
+                        </div>
+                    </div>
+
+                    {/* Compass with Scout watching */}
+                    <div className="compass-container">
+                        <div className="compass">
+                            <div className="compass-center"></div>
+                            <span className="compass-text compass-n">N</span>
+                            <span className="compass-text compass-s">S</span>
+                            <span className="compass-text compass-e">E</span>
+                            <span className="compass-text compass-w">W</span>
+                        </div>
+                        <div className="scout-watching">
+                            <div className="scout-watching-head">
+                                <div className="scout-watching-eye"></div>
+                            </div>
+                            <div className="scout-watching-body"></div>
+                            <div className="scout-watching-legs">
+                                <div className="scout-watching-leg"></div>
+                                <div className="scout-watching-leg"></div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -108,24 +129,24 @@ export default function IndexPage() {
                     ))}
 
                     {/* Night Trees - Night side right */}
-                    <div className="tree-night" style={{ right: '8%', bottom: '0' }}>
+                    <div className="tree-night" style={{ right: '3%', bottom: '0' }}>
                         <div className="tree-night-foliage"></div>
                         <div className="tree-night-trunk"></div>
                     </div>
-                    <div className="tree-night" style={{ right: '25%', bottom: '0' }}>
+                    <div className="tree-night" style={{ right: '12%', bottom: '0' }}>
                         <div className="tree-night-foliage"></div>
                         <div className="tree-night-trunk"></div>
                     </div>
 
                     {/* Night Tents with Light - Night side center */}
-                    <div className="tent-night" style={{ right: '35%', bottom: '90px' }}>
+                    <div className="tent-night" style={{ right: '8%', bottom: '90px' }}>
                         <div className="tent-night-canvas">
                             <div className="tent-light"></div>
                         </div>
                     </div>
 
                     {/* Scouts under stars - Night side right */}
-                    <div className="scout-group" style={{ right: '15%', bottom: '130px' }}>
+                    <div className="scout-group" style={{ right: '5%', bottom: '130px' }}>
                         <div className="scout">
                             <div className="scout-head"></div>
                             <div className="scout-body"></div>
@@ -170,20 +191,20 @@ export default function IndexPage() {
                             transition={{ duration: 0.8 }}
                             className="text-center"
                         >
-                            <h1 className="text-5xl md:text-7xl font-black mb-6 text-white leading-tight">
+                            <h1 className="text-5xl md:text-7xl font-black mb-6 text-black leading-tight">
                                 You're Not Alone
                                 <br />
                                 <span className="text-yellow-300">Adventure Starts Here</span>
                             </h1>
-                            <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto leading-relaxed">
+                            <p className="text-xl text-black/70 mb-8 max-w-2xl mx-auto leading-relaxed">
                                 Join BSA Troop 242 and discover a community where scouts develop leadership, build confidence, and create lifelong friendships through adventure and outdoor experiences.
                             </p>
 
                             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-                                <a href="mailto:troop242sanford@gmail.com" className="px-8 py-4 border-2 border-white text-white font-bold rounded-lg hover:bg-white/10 transition-all">
+                                <a href="mailto:troop242sanford@gmail.com" className="px-8 py-4 border-2 border-black text-black font-bold rounded-lg hover:bg-black/5 transition-all">
                                     Join Us Today
                                 </a>
-                                <a href="/" className="px-8 py-4 border-2 border-white text-white font-bold rounded-lg hover:bg-white/10 transition-all">
+                                <a href="/" className="px-8 py-4 border-2 border-black text-black font-bold rounded-lg hover:bg-black/5 transition-all">
                                     Learn More
                                 </a>
                             </div>
@@ -192,12 +213,12 @@ export default function IndexPage() {
                             <div className="flex justify-center items-center gap-2">
                                 <div className="flex -space-x-4">
                                     {['🦅', '❤️', '🌟', '🥇', '🎖️'].map((emoji, i) => (
-                                        <div key={i} className="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center text-xl border-2 border-white">
+                                        <div key={i} className="w-12 h-12 rounded-full bg-black/10 flex items-center justify-center text-xl border-2 border-black">
                                             {emoji}
                                         </div>
                                     ))}
                                 </div>
-                                <span className="text-sm text-white/80 ml-4">Trusted by 50+ scouts and families</span>
+                                <span className="text-sm text-black/70 ml-4">Trusted by 50+ scouts and families</span>
                             </div>
                         </motion.div>
                     </div>
@@ -211,8 +232,8 @@ export default function IndexPage() {
                             whileInView={{ opacity: 1, y: 0 }}
                             className="flex items-center gap-3 mb-8"
                         >
-                            <Bell className="w-8 h-8 text-white" />
-                            <h2 className="text-3xl md:text-4xl font-black text-white">
+                            <Bell className="w-8 h-8 text-black" />
+                            <h2 className="text-3xl md:text-4xl font-black text-black">
                                 Latest Announcements
                             </h2>
                         </motion.div>
@@ -236,13 +257,13 @@ export default function IndexPage() {
                                         <div className="flex items-start gap-4 flex-1">
                                             <span className="text-3xl mt-1">{announcement.icon}</span>
                                             <div>
-                                                <h3 className="font-bold text-white mb-1">{announcement.title}</h3>
-                                                <p className="text-white/90 text-sm">{announcement.message}</p>
+                                                <h3 className="font-bold text-black mb-1">{announcement.title}</h3>
+                                                <p className="text-black/70 text-sm">{announcement.message}</p>
                                             </div>
                                         </div>
                                         <button
                                             onClick={() => toggleAnnouncement(announcement.id)}
-                                            className="ml-4 text-white/60 hover:text-white transition-colors flex-shrink-0"
+                                            className="ml-4 text-black/60 hover:text-black transition-colors flex-shrink-0"
                                             aria-label="Dismiss announcement"
                                         >
                                             <X size={20} />
@@ -268,7 +289,7 @@ export default function IndexPage() {
                 <section className="py-20 bg-white/90 backdrop-blur-sm day-section">
                     <div className="max-w-7xl mx-auto px-6">
                         <motion.h2
-                            className="text-4xl md:text-5xl font-black text-center mb-16 text-white"
+                            className="text-4xl md:text-5xl font-black text-center mb-16 text-black"
                             initial={{ opacity: 0 }}
                             whileInView={{ opacity: 1 }}
                         >
@@ -282,11 +303,11 @@ export default function IndexPage() {
                                     initial={{ opacity: 0, y: 20 }}
                                     whileInView={{ opacity: 1, y: 0 }}
                                     transition={{ delay: i * 0.1 }}
-                                    className="p-8 bg-white/95 rounded-lg border border-white/50 hover:border-yellow-300 hover:shadow-lg transition-all backdrop-blur-sm"
+                                    className="p-8 bg-white/95 rounded-lg border border-black/50 hover:border-yellow-300 hover:shadow-lg transition-all backdrop-blur-sm"
                                 >
                                     <div className="text-5xl mb-4">{service.emoji}</div>
-                                    <h3 className="text-2xl font-bold text-white mb-3">{service.title}</h3>
-                                    <p className="text-white/80">{service.description}</p>
+                                    <h3 className="text-2xl font-bold text-black mb-3">{service.title}</h3>
+                                    <p className="text-black/70">{service.description}</p>
                                 </motion.div>
                             ))}
                         </div>
@@ -309,7 +330,7 @@ export default function IndexPage() {
                                     transition={{ delay: i * 0.1 }}
                                 >
                                     <div className="text-5xl font-black text-yellow-300 mb-3">{stat.number}</div>
-                                    <div className="text-white/90 font-semibold">{stat.label}</div>
+                                    <div className="text-black/70 font-semibold">{stat.label}</div>
                                 </motion.div>
                             ))}
                         </motion.div>
@@ -320,13 +341,13 @@ export default function IndexPage() {
                 <section className="py-20 bg-gradient-to-b from-gray-100/80 to-white/80 backdrop-blur-sm day-section">
                     <div className="max-w-7xl mx-auto px-6">
                         <motion.h2
-                            className="text-4xl md:text-5xl font-black text-center mb-4 text-white"
+                            className="text-4xl md:text-5xl font-black text-center mb-4 text-black"
                             initial={{ opacity: 0 }}
                             whileInView={{ opacity: 1 }}
                         >
                             Our Leadership Team
                         </motion.h2>
-                        <p className="text-center text-white/80 text-lg mb-16 max-w-2xl mx-auto">
+                        <p className="text-center text-black/70 text-lg mb-16 max-w-2xl mx-auto">
                             Experienced Scout Masters and volunteers dedicated to guiding the next generation of leaders
                         </p>
 
@@ -343,11 +364,11 @@ export default function IndexPage() {
                                     transition={{ delay: i * 0.1 }}
                                     className="text-center"
                                 >
-                                    <div className="w-32 h-32 rounded-full bg-white/20 flex items-center justify-center text-6xl mx-auto mb-4">
+                                    <div className="w-32 h-32 rounded-full bg-black/10 flex items-center justify-center text-6xl mx-auto mb-4">
                                         {member.emoji}
                                     </div>
-                                    <h3 className="text-xl font-bold text-white mb-1">{member.role}</h3>
-                                    <p className="text-white/80">{member.name}</p>
+                                    <h3 className="text-xl font-bold text-black mb-1">{member.role}</h3>
+                                    <p className="text-black/70">{member.name}</p>
                                 </motion.div>
                             ))}
                         </div>
@@ -355,7 +376,7 @@ export default function IndexPage() {
                 </section>
 
                 {/* CTA Section */}
-                <section className="py-20 bg-gradient-to-r from-scout-green to-emerald-600 text-white">
+                <section className="py-20 bg-gradient-to-r from-scout-green to-emerald-600 text-black">
                     <div className="max-w-4xl mx-auto px-4 md:px-6 text-center">
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
@@ -366,11 +387,11 @@ export default function IndexPage() {
                                 We meet every Tuesday at 7:00 PM. New scouts always welcome.
                             </p>
                             <div>
-                                <button onClick={() => window.open('https://calendar.google.com/calendar/r?cid=k11l4b9od26qdlquf6fth7stbg%40group.calendar.google.com', '_blank')} className="px-8 py-4 border-2 border-white text-white font-bold rounded-lg hover:bg-white/10 transition-all btn-borderless">Calendar</button>
+                                <button onClick={() => window.open('https://calendar.google.com/calendar/r?cid=k11l4b9od26qdlquf6fth7stbg%40group.calendar.google.com', '_blank')} className="px-8 py-4 border-2 border-black text-black font-bold rounded-lg hover:bg-black/5 transition-all btn-borderless">Calendar</button>
                             </div>
 
                             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-                                <a href="mailto:troop242sanford@gmail.com" className="px-8 py-4 border-2 border-white text-white font-bold rounded-lg hover:bg-white/10 transition-all">
+                                <a href="mailto:troop242sanford@gmail.com" className="px-8 py-4 border-2 border-black text-black font-bold rounded-lg hover:bg-black/5 transition-all">
                                     Mail Us for any inquiries
                                 </a>
                                

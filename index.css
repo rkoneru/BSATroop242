@@ -1058,13 +1058,11 @@ html {
     height: 100vh;
     background: linear-gradient(90deg,
         #87ceeb 0%,      /* Bright sky blue - day left */
-        #a8d8ff 15%,     /* Light blue */
-        #c4e4ff 25%,     /* Very light blue */
-        #d4c5ff 40%,     /* Purple-tinted blend */
-        #8b7ba8 50%,     /* Deep purple - midpoint transition */
-        #5a5a7a 60%,     /* Dark purple-blue blend */
-        #2c3e50 75%,     /* Dark blue-gray */
-        #1a1a2e 85%,     /* Very dark blue */
+        #9fd4f0 30%,     /* Light blue - day extends */
+        #b8e0f5 60%,     /* Lighter blue - transition begins */
+        #8b7ba8 70%,     /* Purple blend - transition zone */
+        #5a5a7a 80%,     /* Dark purple-blue */
+        #2c3e50 90%,     /* Dark blue-gray - night begins */
         #0f0f1e 100%);   /* Darkest blue - night right */
     z-index: 0;
     overflow: hidden;
@@ -1080,23 +1078,52 @@ html {
     position: absolute;
     left: 0;
     top: 0;
-    width: 50%;
+    width: 75%;
     height: 100%;
     background: transparent;
     overflow: hidden;
 }
 
-/* Sun on day side */
+/* Sun on day side - Semicircle arc animation */
 .sun {
     position: absolute;
     width: 120px;
     height: 120px;
     background: radial-gradient(circle, #ffd700, #ffa500);
     border-radius: 50%;
-    top: 15%;
-    right: 10%;
+    top: 75%;
+    left: 8%;
     box-shadow: 0 0 60px #ffa500;
     z-index: 1;
+    animation: sunArc 8s ease-in-out infinite;
+}
+
+@keyframes sunArc {
+    0% {
+        left: 8%;
+        top: 75%;
+        opacity: 0.7;
+    }
+    25% {
+        left: 20%;
+        top: 35%;
+        opacity: 1;
+    }
+    50% {
+        left: 40%;
+        top: 10%;
+        opacity: 1;
+    }
+    75% {
+        left: 60%;
+        top: 35%;
+        opacity: 0.9;
+    }
+    100% {
+        left: 8%;
+        top: 75%;
+        opacity: 0.7;
+    }
 }
 
 /* Trees on day side */
@@ -1234,23 +1261,47 @@ html {
     position: absolute;
     right: 0;
     top: 0;
-    width: 50%;
+    width: 25%;
     height: 100%;
     background: transparent;
     overflow: hidden;
 }
 
-/* Moon on night side */
+/* Moon on night side - Follows sun arc then sets */
 .moon {
     position: absolute;
     width: 100px;
     height: 100px;
     background: radial-gradient(circle, #f0e68c, #daa520);
     border-radius: 50%;
-    top: 10%;
-    left: 10%;
+    right: 8%;
+    top: 75%;
     box-shadow: 0 0 40px #f0e68c, inset -30px -10px 40px rgba(0, 0, 0, 0.3);
     z-index: 1;
+    animation: moonSet 8s ease-in-out infinite;
+}
+
+@keyframes moonSet {
+    0% {
+        right: 8%;
+        top: 75%;
+        opacity: 0;
+    }
+    50% {
+        right: 30%;
+        top: 35%;
+        opacity: 0.8;
+    }
+    75% {
+        right: 15%;
+        top: 15%;
+        opacity: 1;
+    }
+    100% {
+        right: 8%;
+        top: 75%;
+        opacity: 0;
+    }
 }
 
 /* Stars on night side */
@@ -1365,6 +1416,142 @@ html {
     height: 8px;
     background: #333;
     border-radius: 2px;
+}
+
+/* Compass and Scout Watching */
+.compass-container {
+    position: absolute;
+    left: 28%;
+    bottom: 140px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.compass {
+    width: 80px;
+    height: 80px;
+    border: 4px solid #8b6914;
+    border-radius: 50%;
+    background: radial-gradient(circle, #f5deb3, #deb887);
+    position: relative;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3), inset 0 2px 4px rgba(255, 255, 255, 0.5);
+}
+
+.compass::before {
+    content: '';
+    position: absolute;
+    width: 2px;
+    height: 25px;
+    background: #c41e3a;
+    left: 50%;
+    top: 10%;
+    transform: translateX(-50%);
+    border-radius: 2px;
+}
+
+.compass::after {
+    content: '';
+    position: absolute;
+    width: 2px;
+    height: 20px;
+    background: #000;
+    left: 50%;
+    bottom: 10%;
+    transform: translateX(-50%);
+    border-radius: 2px;
+}
+
+.compass-center {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: #333;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+}
+
+.compass-text {
+    position: absolute;
+    font-size: 9px;
+    font-weight: bold;
+    color: #333;
+}
+
+.compass-n {
+    top: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.compass-s {
+    bottom: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.compass-e {
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.compass-w {
+    left: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.scout-watching {
+    width: 20px;
+    height: 28px;
+    position: relative;
+}
+
+.scout-watching-head {
+    width: 8px;
+    height: 8px;
+    background: #d4a574;
+    border-radius: 50%;
+    margin: 0 auto;
+    position: relative;
+}
+
+.scout-watching-eye {
+    width: 2px;
+    height: 2px;
+    background: #000;
+    position: absolute;
+    right: 1px;
+    top: 3px;
+    border-radius: 50%;
+}
+
+.scout-watching-body {
+    width: 12px;
+    height: 12px;
+    background: #228b22;
+    margin: 2px auto;
+    border-radius: 2px;
+}
+
+.scout-watching-legs {
+    width: 10px;
+    height: 6px;
+    margin: 0 auto;
+    display: flex;
+    gap: 2px;
+}
+
+.scout-watching-leg {
+    width: 3px;
+    height: 6px;
+    background: #333;
+    border-radius: 1px;
 }
 
 /* Transition overlay */
