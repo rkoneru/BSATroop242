@@ -126,7 +126,7 @@ export default function Header() {
     return (
         <>
             {/* Navigation */}
-            <nav className="fixed top-0 left-0 w-full z-50 backdrop-blur-md bg-gradient-to-b from-black/80 to-black/60 border-b border-scout-green/30" aria-label="Primary navigation">
+            <nav className="fixed top-0 left-0 w-full z-50 backdrop-blur-md bg-white/80 border-b border-scout-green/20" aria-label="Primary navigation">
                 <div className="max-w-7xl mx-auto px-6 py-3 flex justify-between items-center relative z-10">
                     <motion.button
                         onClick={() => navigate('/')}
@@ -173,12 +173,12 @@ export default function Header() {
                             className="md:hidden border-t border-scout-green/20 overflow-hidden"
                             aria-hidden={!isMenuOpen}
                         >
-                            <div className="px-5 py-5 bg-black/70 backdrop-blur-sm flex flex-col gap-3">
+                            <div className="px-5 py-5 bg-white/95 backdrop-blur-sm flex flex-col gap-3">
                                 {navItems.map((item, idx) => (
                                     <div key={idx}>
                                         {item.children ? (
                                             <div>
-                                                <div className="px-3 py-3 text-white font-semibold">
+                                                <div className="px-3 py-3 text-gray-700 font-semibold">
                                                     {item.label}
                                                 </div>
                                                 <div className="pl-5 space-y-2 border-l-3 border-scout-green/30">
@@ -187,14 +187,14 @@ export default function Header() {
                                                             {child.anchor ? (
                                                                 <button
                                                                     onClick={(e) => { handleAnchorClick(e, child.href); closeMenu(); }}
-                                                                    className="block w-full text-left px-4 py-2.5 text-sm text-gray-300 hover:text-scout-green hover:bg-scout-green/10 transition-colors rounded-lg btn-borderless"
+                                                                    className="block w-full text-left px-4 py-2.5 text-sm text-gray-600 hover:text-scout-green hover:bg-scout-green/5 transition-colors rounded-lg btn-borderless"
                                                                 >
                                                                     {child.label}
                                                                 </button>
                                                             ) : (
                                                                 <button
                                                                     onClick={() => { navigate(child.href); closeMenu(); }}
-                                                                    className="block w-full text-left px-4 py-2.5 text-sm text-gray-300 hover:text-scout-green hover:bg-scout-green/10 transition-colors rounded-lg btn-borderless"
+                                                                    className="block w-full text-left px-4 py-2.5 text-sm text-gray-600 hover:text-scout-green hover:bg-scout-green/5 transition-colors rounded-lg btn-borderless"
                                                                 >
                                                                     {child.label}
                                                                 </button>
