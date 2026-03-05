@@ -7,7 +7,6 @@ import CalendarPage from './CalendarPage.jsx'
 import MembersPage from './MembersPage.jsx'
 import CampingPage from './CampingPage.jsx'
 import ScoutCamping from './ScoutCamping.jsx'
-import Troop242Hero from './troop242-hero.jsx'
 import TroopCamping from './troop242-full.jsx'
 import { AnnouncementProvider } from './AnnouncementContext.jsx'
 import './index.css'
@@ -18,7 +17,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <AnnouncementProvider>
       <BrowserRouter basename="/BSATroop242">
         <Routes>
-          <Route path="/" element={<CampingPage />} />
+          <Route path="/" element={<TroopCamping />} />
           <Route path="/home" element={<App />} />
           <Route path="/about" element={<IndexPage />} />
           <Route path="/stories" element={<StoriesPage />} />
@@ -26,7 +25,6 @@ ReactDOM.createRoot(document.getElementById('root')).render(
           <Route path="/members" element={<MembersPage />} />
           <Route path="/camping" element={<CampingPage />} />
           <Route path="/scout-camping" element={<ScoutCamping />} />
-          <Route path="/troop242" element={<Troop242Hero />} />
           <Route path="/troop-camping" element={<TroopCamping />} />
         </Routes>
        </BrowserRouter>

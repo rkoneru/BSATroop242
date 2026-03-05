@@ -756,6 +756,202 @@ export default function Troop242() {
           ))}
         </div>
       </section>
+
+      {/* ── RANK PROGRESSION ── */}
+      <section style={{background:"#0a0618",borderTop:"1px solid rgba(255,184,60,0.1)",padding:"80px 32px",display:"flex",flexDirection:"column",alignItems:"center"}}>
+        <div style={{display:"flex",alignItems:"center",gap:12,marginBottom:12}}>
+          <div style={{height:1,width:48,background:"rgba(255,184,60,0.4)"}}/>
+          <p style={{fontFamily:"'Oswald',sans-serif",fontSize:11,letterSpacing:5,textTransform:"uppercase",color:"#ffb83c"}}>Scout Ranks</p>
+          <div style={{height:1,width:48,background:"rgba(255,184,60,0.4)"}}/>
+        </div>
+        <h2 style={{fontFamily:"'Oswald',sans-serif",fontSize:"clamp(30px,5vw,52px)",fontWeight:700,color:"#fff",marginBottom:32,textAlign:"center"}}>
+          Progress Your Scouting Journey
+        </h2>
+
+        <div style={{width:"100%",maxWidth:1000,overflowX:"auto",paddingBottom:20,marginBottom:48}}>
+          <div style={{display:"flex",gap:20,justifyContent:"space-between",minWidth:800,paddingX:16}}>
+            {[
+              {icon:"🦅",rank:"Scout",emoji:"👦"},
+              {icon:"🔥",rank:"Tenderfoot",emoji:"👨"},
+              {icon:"⛺",rank:"2nd Class",emoji:"🚴"},
+              {icon:"🧭",rank:"1st Class",emoji:"🏕️"},
+              {icon:"⭐",rank:"Star",emoji:"🌟"},
+              {icon:"🎖️",rank:"Life",emoji:"👨‍💼"},
+              {icon:"🦅",rank:"Eagle",emoji:"🏆"},
+            ].map((item,i)=>(
+              <div key={i} style={{
+                display:"flex",flexDirection:"column",alignItems:"center",gap:12,
+                background:"rgba(255,184,60,0.08)",border:"1px solid rgba(255,184,60,0.3)",
+                borderRadius:16,padding:24,minWidth:140,
+                transition:"all 0.3s",
+              }}>
+                <div style={{
+                  width:80,height:80,borderRadius:"50%",background:"linear-gradient(135deg,rgba(255,184,60,0.4),rgba(255,100,20,0.2))",
+                  display:"flex",alignItems:"center",justifyContent:"center",fontSize:40,
+                  border:"2px solid rgba(255,184,60,0.5)",
+                }}>
+                  {item.emoji}
+                </div>
+                <div style={{fontFamily:"'Oswald',sans-serif",fontSize:13,fontWeight:600,color:"#ffb83c",letterSpacing:1}}>{item.rank}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <p style={{color:"rgba(255,255,255,0.6)",fontSize:14,textAlign:"center",maxWidth:560,lineHeight:1.7}}>
+          Each rank builds leadership, outdoor skills, and community service. Scouts advance through requirements, merit badges, and personal growth — earning recognition at every milestone.
+        </p>
+      </section>
+
+      {/* ── MERIT BADGES TIMELINE ── */}
+      <section style={{background:"#0e0820",borderTop:"1px solid rgba(255,255,255,0.05)",padding:"80px 32px",display:"flex",flexDirection:"column",alignItems:"center"}}>
+        <h2 style={{fontFamily:"'Oswald',sans-serif",fontSize:"clamp(30px,5vw,52px)",fontWeight:700,color:"#fff",marginBottom:48,textAlign:"center"}}>
+          Merit Badges Earned
+        </h2>
+
+        <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(200px,1fr))",gap:24,width:"100%",maxWidth:1000,marginBottom:48}}>
+          {[
+            {year:"2025",count:47,color:"#ffb83c"},
+            {year:"2024",count:54,color:"#ff8c1a"},
+            {year:"2023",count:42,color:"#ff6600"},
+            {year:"2022",count:38,color:"#cc5500"},
+          ].map((item,i)=>(
+            <div key={i} style={{
+              background:"linear-gradient(135deg,rgba(255,184,60,0.1),rgba(255,100,20,0.05))",
+              border:"1px solid rgba(255,184,60,0.25)",
+              borderRadius:16,padding:28,textAlign:"center",
+              transition:"all 0.3s",
+            }}
+              onMouseEnter={e=>{e.currentTarget.style.background="linear-gradient(135deg,rgba(255,184,60,0.15),rgba(255,100,20,0.1))";e.currentTarget.style.borderColor="rgba(255,184,60,0.4)";}}
+              onMouseLeave={e=>{e.currentTarget.style.background="linear-gradient(135deg,rgba(255,184,60,0.1),rgba(255,100,20,0.05))";e.currentTarget.style.borderColor="rgba(255,184,60,0.25)";}}
+            >
+              <div style={{fontSize:32,marginBottom:12}}>🏅</div>
+              <div style={{fontFamily:"'Oswald',sans-serif",fontSize:14,color:"rgba(255,255,255,0.5)",letterSpacing:2,marginBottom:8}}>YEAR</div>
+              <div style={{fontFamily:"'Oswald',sans-serif",fontSize:28,fontWeight:700,color:item.color,marginBottom:12}}>{item.year}</div>
+              <div style={{fontFamily:"'Oswald',sans-serif",fontSize:18,fontWeight:600,color:"#fff"}}>{item.count}</div>
+              <div style={{fontSize:11,color:"rgba(255,255,255,0.4)",marginTop:6}}>Badges Earned</div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ── EAGLE SCOUTS ── */}
+      <section style={{background:"#0a0618",borderTop:"1px solid rgba(255,184,60,0.1)",padding:"80px 32px",display:"flex",flexDirection:"column",alignItems:"center"}}>
+        <div style={{display:"flex",alignItems:"center",gap:12,marginBottom:12}}>
+          <div style={{height:1,width:48,background:"rgba(255,184,60,0.4)"}}/>
+          <p style={{fontFamily:"'Oswald',sans-serif",fontSize:11,letterSpacing:5,textTransform:"uppercase",color:"#ffb83c"}}>Hall of Honor</p>
+          <div style={{height:1,width:48,background:"rgba(255,184,60,0.4)"}}/>
+        </div>
+        <h2 style={{fontFamily:"'Oswald',sans-serif",fontSize:"clamp(30px,5vw,52px)",fontWeight:700,color:"#fff",marginBottom:12,textAlign:"center"}}>
+          🦅 Eagle Scouts
+        </h2>
+        <p style={{color:"rgba(255,255,255,0.5)",fontSize:13,marginBottom:48,textAlign:"center"}}>Scouts who reached the highest rank</p>
+
+        <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(180px,1fr))",gap:20,width:"100%",maxWidth:900}}>
+          {[
+            {name:"Marcus Johnson",year:"2024"},
+            {name:"Tyler Rodriguez",year:"2023"},
+            {name:"Joshua Chen",year:"2023"},
+            {name:"Brandon Lee",year:"2022"},
+            {name:"Nathan Williams",year:"2022"},
+            {name:"David Martinez",year:"2021"},
+            {name:"Christopher Hall",year:"2021"},
+            {name:"Matthew Thompson",year:"2020"},
+            {name:"Andrew Jackson",year:"2020"},
+            {name:"Kevin Davis",year:"2019"},
+            {name:"Ryan Murphy",year:"2019"},
+            {name:"Justin Harris",year:"2018"},
+          ].map((eagle,i)=>(
+            <div key={i} style={{
+              background:"rgba(255,184,60,0.08)",border:"1px solid rgba(255,184,60,0.3)",
+              borderRadius:12,padding:20,textAlign:"center",
+              transition:"all 0.3s",
+            }}
+              onMouseEnter={e=>{e.currentTarget.style.background="rgba(255,184,60,0.15)";e.currentTarget.style.borderColor="rgba(255,184,60,0.5)";e.currentTarget.style.transform="translateY(-4px)";}}
+              onMouseLeave={e=>{e.currentTarget.style.background="rgba(255,184,60,0.08)";e.currentTarget.style.borderColor="rgba(255,184,60,0.3)";e.currentTarget.style.transform="translateY(0)";}}
+            >
+              <div style={{fontSize:28,marginBottom:8}}>🦅</div>
+              <div style={{fontFamily:"'Oswald',sans-serif",fontSize:14,fontWeight:600,color:"#fff",marginBottom:6}}>{eagle.name}</div>
+              <div style={{fontSize:11,color:"rgba(255,255,255,0.4)"}}>{eagle.year}</div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ── ADULT LEADERS ── */}
+      <section style={{background:"#0e0820",borderTop:"1px solid rgba(255,255,255,0.05)",padding:"80px 32px",display:"flex",flexDirection:"column",alignItems:"center"}}>
+        <h2 style={{fontFamily:"'Oswald',sans-serif",fontSize:"clamp(30px,5vw,52px)",fontWeight:700,color:"#fff",marginBottom:12,textAlign:"center"}}>
+          🎯 Leadership Team
+        </h2>
+        <p style={{color:"rgba(255,255,255,0.5)",fontSize:13,marginBottom:48,textAlign:"center"}}>Dedicated adults mentoring the next generation of leaders</p>
+
+        <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(200px,1fr))",gap:24,width:"100%",maxWidth:1000}}>
+          {[
+            {name:"Robert Schmidt",role:"Scoutmaster",icon:"👨‍🏫"},
+            {name:"Jennifer Davis",role:"Assistant Scoutmaster",icon:"👩‍🏫"},
+            {name:"Michael Torres",role:"Advancement Chair",icon:"📚"},
+            {name:"Sarah Johnson",role:"Outdoor Skills",icon:"🏕️"},
+            {name:"David Park",role:"Activities Lead",icon:"⛺"},
+            {name:"Lisa Anderson",role:"Troop Coordinator",icon:"📋"},
+          ].map((leader,i)=>(
+            <div key={i} style={{
+              background:"linear-gradient(135deg,rgba(255,100,20,0.15),rgba(255,184,60,0.08))",
+              border:"1px solid rgba(255,184,60,0.25)",
+              borderRadius:16,padding:28,textAlign:"center",
+              transition:"all 0.3s",
+            }}
+              onMouseEnter={e=>{e.currentTarget.style.background="linear-gradient(135deg,rgba(255,100,20,0.25),rgba(255,184,60,0.15))";e.currentTarget.style.borderColor="rgba(255,184,60,0.4)";}}
+              onMouseLeave={e=>{e.currentTarget.style.background="linear-gradient(135deg,rgba(255,100,20,0.15),rgba(255,184,60,0.08))";e.currentTarget.style.borderColor="rgba(255,184,60,0.25)";}}
+            >
+              <div style={{fontSize:40,marginBottom:12}}>{leader.icon}</div>
+              <div style={{fontFamily:"'Oswald',sans-serif",fontSize:15,fontWeight:600,color:"#fff",marginBottom:6}}>{leader.name}</div>
+              <div style={{fontSize:12,color:"#ffb83c",letterSpacing:1,textTransform:"uppercase"}}>{leader.role}</div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ── JOIN US FORM ── */}
+      <section style={{background:"linear-gradient(135deg,rgba(255,184,60,0.12),rgba(255,100,20,0.06))",borderTop:"1px solid rgba(255,184,60,0.2)",borderBottom:"1px solid rgba(255,184,60,0.2)",padding:"80px 32px",display:"flex",flexDirection:"column",alignItems:"center"}}>
+        <h2 style={{fontFamily:"'Oswald',sans-serif",fontSize:"clamp(30px,5vw,52px)",fontWeight:700,color:"#fff",marginBottom:12,textAlign:"center"}}>
+          Ready to Join Us?
+        </h2>
+        <p style={{color:"rgba(255,255,255,0.6)",fontSize:14,marginBottom:48,textAlign:"center",maxWidth:560}}>
+          Weekly meetings every Tuesday at 7:00 PM in Sanford, FL. Get in touch to learn more about Troop 242.
+        </p>
+
+        <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(250px,1fr))",gap:24,width:"100%",maxWidth:900,marginBottom:48}}>
+          {[
+            {icon:"📧",label:"Email Us",value:"troop242sanford@gmail.com"},
+            {icon:"📍",label:"Meeting Location",value:"Sanford, FL • Central Florida"},
+            {icon:"🕖",label:"Meeting Time",value:"Tuesday 7:00 PM"},
+          ].map((item,i)=>(
+            <div key={i} style={{
+              background:"rgba(255,255,255,0.06)",border:"1px solid rgba(255,184,60,0.25)",
+              borderRadius:16,padding:24,textAlign:"center",
+            }}>
+              <div style={{fontSize:32,marginBottom:12}}>{item.icon}</div>
+              <div style={{fontFamily:"'Oswald',sans-serif",fontSize:12,color:"rgba(255,255,255,0.5)",letterSpacing:1,marginBottom:6,textTransform:"uppercase"}}>
+                {item.label}
+              </div>
+              <div style={{fontSize:14,color:"#fff",fontWeight:600}}>{item.value}</div>
+            </div>
+          ))}
+        </div>
+
+        <button style={{
+          padding:"15px 48px",borderRadius:50,
+          background:"linear-gradient(135deg,#ffb83c,#ff7c14)",
+          color:"#1a0800",border:"none",cursor:"pointer",
+          fontFamily:"'Oswald',sans-serif",fontSize:15,fontWeight:700,
+          letterSpacing:3,textTransform:"uppercase",
+          boxShadow:"0 8px 32px rgba(255,140,20,0.4)",
+          transition:"all 0.25s",
+        }}
+          onMouseEnter={e=>{e.currentTarget.style.transform="translateY(-4px)";e.currentTarget.style.boxShadow="0 14px 40px rgba(255,140,20,0.55)";}}
+          onMouseLeave={e=>{e.currentTarget.style.transform="translateY(0)";e.currentTarget.style.boxShadow="0 8px 32px rgba(255,140,20,0.4)";}}
+        >Contact Us Today →</button>
+      </section>
     </div>
       <Footer />
     </>
