@@ -4,9 +4,9 @@ import Header from './Header.jsx';
 import Footer from './Footer.jsx';
 
 const EVENTS = [
-  { name: "Spring Campout", date: "2025-03-19T08:00:00", location: "Key West, Florida Keys" },
-  { name: "Merit Badge Day", date: "2025-05-03T09:00:00", location: "Camp Flastacowo" },
-  { name: "Eagle Court of Honor", date: "2025-05-17T18:00:00", location: "Troop Meeting Hall" },
+  { name: "Spring Campout", date: "2026-03-19T08:00:00", location: "Key West, Florida Keys" },
+  { name: "Merit Badge Day", date: "2026-06-06T09:00:00", location: "Camp Flastacowo" },
+  { name: "Eagle Court of Honor", date: "2026-06-20T18:00:00", location: "Troop Meeting Hall" },
 ];
 
 function useCountdown(targetDateStr) {
@@ -660,7 +660,7 @@ export default function Troop242() {
           🏕️ Spring Campout
         </h2>
         <p style={{color:"rgba(255,255,255,0.45)",fontSize:13,letterSpacing:2,textTransform:"uppercase",marginBottom:10}}>
-          📍 Key West, Florida Keys · March 19, 2025
+          📍 Key West, Florida Keys · April 18, 2026
         </p>
         <p style={{color:"rgba(255,255,255,0.55)",fontSize:15,maxWidth:560,textAlign:"center",lineHeight:1.7,marginBottom:48}}>
           Pack your gear and join Troop 242 for an unforgettable overnight adventure among the mangroves and crystal-clear waters of Key West. Fishing, kayaking, stargazing, and campfire stories await.
