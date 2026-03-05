@@ -1,11 +1,16 @@
 import { useNavigate, useLocation } from 'react-router-dom';
+import { useCallback } from 'react';
 
 export default function Footer() {
     const currentYear = new Date().getFullYear();
     const navigate = useNavigate();
     const location = useLocation();
 
-    const handleAnchorClick = (e, anchor) => {
+    const handleNavigate = useCallback((path) => {
+        navigate(path);
+    }, [navigate]);
+
+    const handleAnchorClick = useCallback((e, anchor) => {
         e.preventDefault();
         if (location.pathname === '/') {
             // If already on home, just scroll to element
@@ -25,56 +30,66 @@ export default function Footer() {
                 }
             }, 300);
         }
-    };
+    }, [navigate, location.pathname]);
 
     return (
-        <footer className="footer-scout py-16 border-t border-scout-green/20">
-            <div className="max-w-7xl mx-auto px-6">
-                <div className="flex flex-col gap-12 mb-12">
+        <footer className="footer-scout py-12 md:py-16 border-t border-scout-green/20">
+            <div className="max-w-7xl mx-auto px-4 md:px-6">
+                {/* Mobile/Tablet: Stacked Grid */}
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12 mb-12">
                     {/* Branding */}
-                    <div>
+                    <div className="col-span-1 md:col-span-2 lg:col-span-1">
                         <div className="flex items-center gap-2 mb-4">
                             <div className="text-2xl">⛺</div>
-                            <div className="font-black italic uppercase text-scout-tan">BSA Troop 242</div>
+                            <div className="font-black italic uppercase text-scout-tan text-sm md:text-base">BSA Troop 242</div>
                         </div>
-                        <p className="text-sm text-gray-200">Empowering youth through outdoor adventure, leadership development, and community service. Building the leaders of tomorrow since 1996.</p>
+                        <p className="text-xs md:text-sm text-gray-200 leading-relaxed">Empowering youth through outdoor adventure, leadership development, and community service.</p>
                     </div>
 
-                    {/* Navigation Row */}
+                    {/* Navigation */}
                     <div>
-                        <h3 className="font-bold text-gray-200 mb-6">Quick Links</h3>
-                        <div className="flex flex-wrap items-center gap-6">
-                            <button onClick={() => navigate('/')} className="text-sm text-gray-400 hover:text-scout-green transition-colors btn-borderless">Home</button>
-                            <button onClick={() => navigate('/calendar')} className="text-sm text-gray-400 hover:text-scout-green transition-colors btn-borderless">Calendar</button>
-                            <button onClick={() => navigate('/stories')} className="text-sm text-gray-400 hover:text-scout-green transition-colors btn-borderless">Stories</button>
-                            <button onClick={() => navigate('/about')} className="text-sm text-gray-400 hover:text-scout-green transition-colors btn-borderless">About</button>
-                            <button onClick={(e) => handleAnchorClick(e, '#events')} className="text-sm text-gray-400 hover:text-scout-green transition-colors btn-borderless">Events</button>
-                            {/* <button onClick={(e) => handleAnchorClick(e, '#contact')} className="text-sm text-gray-400 hover:text-scout-green transition-colors btn-borderless">Contact</button> */}
-                        </div>
-                    </div>
-
-                    {/* Resources Row */}
-                    <div>
-                        <h3 className="font-bold text-gray-200 mb-6">Resources</h3>
-                        <div className="flex flex-wrap items-center gap-6">
-                            <button onClick={() => window.open('https://scoutbook.scouting.org/', '_blank')} className="text-sm text-gray-400 hover:text-scout-green transition-colors btn-borderless">Scoutbook</button>
-                            <button onClick={() => window.open('https://www.scouting.org/', '_blank')} className="text-sm text-gray-400 hover:text-scout-green transition-colors btn-borderless">BSA.org</button>
-                            <button onClick={() => window.open('https://calendar.google.com/calendar/r?cid=k11l4b9od26qdlquf6fth7stbg%40group.calendar.google.com', '_blank')} className="text-sm text-gray-400 hover:text-scout-green transition-colors btn-borderless">Calendar</button>
-                            <button onClick={() => navigate('/members')} className="text-sm text-gray-400 hover:text-scout-green transition-colors btn-borderless">Leaders Portal</button>
+                        <h3 className="font-bold text-gray-200 mb-4 text-sm md:text-base">Quick Links</h3>
+                        <div className="flex flex-col gap-3">
+                            <button onClick={() => handleNavigate('/')} className="text-xs md:text-sm text-gray-400 hover:text-scout-green transition-colors btn-borderless text-left">Home</button>
+                            <button onClick={() => handleNavigate('/calendar')} className="text-xs md:text-sm text-gray-400 hover:text-scout-green transition-colors btn-borderless text-left">Calendar</button>
+                            <button onClick={() => handleNavigate('/stories')} className="text-xs md:text-sm text-gray-400 hover:text-scout-green transition-colors btn-borderless text-left">Stories</button>
+                            <button onClick={() => handleNavigate('/about')} className="text-xs md:text-sm text-gray-400 hover:text-scout-green transition-colors btn-borderless text-left">About</button>
+                            <button onClick={(e) => handleAnchorClick(e, '#events')} className="text-xs md:text-sm text-gray-400 hover:text-scout-green transition-colors btn-borderless text-left">Events</button>
                         </div>
                     </div>
 
-                    {/* Get Involved */}
+                    {/* Camping & Resources */}
                     <div>
-                        <h3 className="font-bold text-gray-200 mb-6">Get Involved</h3>
-                        <p className="text-sm text-gray-400 mb-5">Join us for weekly meetings every Tuesday at 7:00 PM in Sanford, FL.</p>
-                        <button onClick={(e) => handleAnchorClick(e, '#contact')} className="text-sm btn-scout-primary px-6 py-3 rounded-lg inline-block font-semibold btn-borderless">Contact Us</button>
+                        <h3 className="font-bold text-gray-200 mb-4 text-sm md:text-base">Explore</h3>
+                        <div className="flex flex-col gap-3">
+                            <button onClick={() => handleNavigate('/camping')} className="text-xs md:text-sm text-gray-400 hover:text-scout-green transition-colors btn-borderless text-left">Camping</button>
+                            <button onClick={() => handleNavigate('/scout-camping')} className="text-xs md:text-sm text-gray-400 hover:text-scout-green transition-colors btn-borderless text-left">Scout Camping</button>
+                            <button onClick={() => handleNavigate('/troop-camping')} className="text-xs md:text-sm text-gray-400 hover:text-scout-green transition-colors btn-borderless text-left">Troop Camping</button>
+                            <button onClick={() => handleNavigate('/members')} className="text-xs md:text-sm text-gray-400 hover:text-scout-green transition-colors btn-borderless text-left">Leaders Portal</button>
+                        </div>
+                    </div>
+
+                    {/* External Resources */}
+                    <div>
+                        <h3 className="font-bold text-gray-200 mb-4 text-sm md:text-base">Resources</h3>
+                        <div className="flex flex-col gap-3">
+                            <button onClick={() => window.open('https://scoutbook.scouting.org/', '_blank')} className="text-xs md:text-sm text-gray-400 hover:text-scout-green transition-colors btn-borderless text-left">Scoutbook</button>
+                            <button onClick={() => window.open('https://www.scouting.org/', '_blank')} className="text-xs md:text-sm text-gray-400 hover:text-scout-green transition-colors btn-borderless text-left">BSA.org</button>
+                            <button onClick={() => window.open('https://calendar.google.com/calendar/r?cid=k11l4b9od26qdlquf6fth7stbg%40group.calendar.google.com', '_blank')} className="text-xs md:text-sm text-gray-400 hover:text-scout-green transition-colors btn-borderless text-left">Google Calendar</button>
+                        </div>
                     </div>
                 </div>
 
+                {/* Get Involved CTA - Full Width on Mobile */}
+                <div className="bg-scout-green/10 border border-scout-green/30 rounded-lg p-6 mb-8 md:mb-12">
+                    <h3 className="font-bold text-scout-tan text-base md:text-lg mb-3">Join Us</h3>
+                    <p className="text-xs md:text-sm text-gray-300 mb-4">Weekly meetings every Tuesday at 7:00 PM in Sanford, FL</p>
+                    <button onClick={(e) => handleAnchorClick(e, '#contact')} className="text-xs md:text-sm btn-scout-primary px-4 md:px-6 py-2 md:py-3 rounded-lg inline-block font-semibold">Contact Us</button>
+                </div>
+
                 {/* Copyright */}
-                <div className="border-t border-scout-green/20 pt-8 text-center">
-                    <p className="text-sm text-gray-200">
+                <div className="border-t border-scout-green/20 pt-6 md:pt-8 text-center">
+                    <p className="text-xs md:text-sm text-gray-300">
                         © {currentYear} BSA Troop 242 Sanford. All rights reserved.
                     </p>
                 </div>

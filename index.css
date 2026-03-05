@@ -690,6 +690,99 @@ html {
     justify-content: center;
 }
 
+/* Scout Law & Outdoor Law Grid Styles */
+.scout-law-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.scout-law-card {
+    background-color: #1f293f;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    border: 1px solid rgba(64, 145, 108, 0.3);
+}
+
+.scout-law-card h3 {
+    font-size: 1.125rem;
+    font-weight: bold;
+    color: #40916c;
+    margin-bottom: 0.5rem;
+}
+
+.scout-law-card p {
+    color: #d1d5db;
+    font-size: 0.875rem;
+    line-height: 1.5;
+}
+
+.outdoor-law-section {
+    padding: 4rem 1rem;
+    background-color: rgba(175, 170, 170, 0.34);
+}
+
+.outdoor-law-container {
+    max-width: 56rem;
+    margin: 0 auto;
+}
+
+.outdoor-law-title {
+    font-size: 2.25rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 3rem;
+    color: #d4a853;
+}
+
+.outdoor-code-intro {
+    font-size: 1.75rem;
+    font-weight: bold;
+    text-align: left;
+    margin-bottom: 1rem;
+    color: #77684a;
+}
+
+.outdoor-law-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.outdoor-law-card {
+    background-color: #0f1419;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    border-left: 4px solid;
+}
+
+.outdoor-law-card h3 {
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.outdoor-law-card p {
+    color: #d1d5db;
+}
+
+.scout-law-section {
+    padding: 4rem 1rem;
+}
+
+.scout-law-section-container {
+    max-width: 80rem;
+    margin: 0 auto;
+}
+
+.scout-law-section-title {
+    font-size: 2.25rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 3rem;
+    color: #d4a853;
+}
+
 @media (prefers-reduced-motion: reduce) {
 
     *,
@@ -1095,44 +1188,62 @@ html {
     left: 8%;
     box-shadow: 0 0 60px #ffa500;
     z-index: 1;
-    animation: sunArc 8s ease-in-out infinite;
+    animation: sunArc 12s ease-in-out infinite;
 }
 
 @keyframes sunArc {
     0% {
         left: 2%;
         top: 78%;
+        opacity: 0;
+        box-shadow: 0 0 60px #ffa500;
+    }
+    5% {
+        left: 2%;
+        top: 78%;
         opacity: 0.8;
         box-shadow: 0 0 60px #ffa500;
     }
-    25% {
+    20% {
         left: 20%;
         top: 40%;
         opacity: 1;
         box-shadow: 0 0 60px #ffa500;
     }
-    50% {
+    40% {
         left: 48%;
         top: 5%;
         opacity: 1;
         box-shadow: 0 0 60px #ffa500;
     }
-    75% {
+    60% {
         left: 76%;
         top: 40%;
         opacity: 1;
         box-shadow: 0 0 60px #ffa500;
     }
-    90% {
-        left: 92%;
-        top: 78%;
-        opacity: 1;
+    75% {
+        left: 90%;
+        top: 8%;
+        opacity: 0.9;
+        box-shadow: 0 0 60px #ffa500;
+    }
+    78% {
+        left: 95%;
+        top: 5%;
+        opacity: 0;
+        box-shadow: 0 0 60px #ffa500;
+    }
+    79% {
+        left: 95%;
+        top: 5%;
+        opacity: 0;
         box-shadow: 0 0 60px #ffa500;
     }
     100% {
-        left: 2%;
-        top: 78%;
-        opacity: 0.8;
+        left: 95%;
+        top: 5%;
+        opacity: 0;
         box-shadow: 0 0 60px #ffa500;
     }
 }
@@ -1289,36 +1400,42 @@ html {
     top: 75%;
     box-shadow: 0 0 40px #f0e68c, inset -30px -10px 40px rgba(0, 0, 0, 0.3);
     z-index: 1;
-    animation: moonSet 8s ease-in-out infinite;
+    animation: moonSet 12s ease-in-out infinite;
 }
 
 @keyframes moonSet {
     0% {
-        left: 2%;
-        top: 78%;
+        left: 95%;
+        top: 5%;
         opacity: 0;
         box-shadow: 0 0 40px #f0e68c, inset -30px -10px 40px rgba(0, 0, 0, 0.3);
     }
-    50% {
-        left: 48%;
+    78% {
+        left: 95%;
+        top: 5%;
+        opacity: 0;
+        box-shadow: 0 0 40px #f0e68c, inset -30px -10px 40px rgba(0, 0, 0, 0.3);
+    }
+    80% {
+        left: 95%;
         top: 5%;
         opacity: 1;
         box-shadow: 0 0 40px #f0e68c, inset -30px -10px 40px rgba(0, 0, 0, 0.3);
     }
-    75% {
-        left: 76%;
+    90% {
+        left: 95%;
         top: 40%;
         opacity: 1;
         box-shadow: 0 0 40px #f0e68c, inset -30px -10px 40px rgba(0, 0, 0, 0.3);
     }
-    90% {
-        left: 92%;
+    95% {
+        left: 95%;
         top: 78%;
-        opacity: 1;
+        opacity: 0;
         box-shadow: 0 0 40px #f0e68c, inset -30px -10px 40px rgba(0, 0, 0, 0.3);
     }
     100% {
-        left: 2%;
+        left: 95%;
         top: 78%;
         opacity: 0;
         box-shadow: 0 0 40px #f0e68c, inset -30px -10px 40px rgba(0, 0, 0, 0.3);
