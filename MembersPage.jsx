@@ -73,13 +73,13 @@ export default function MembersPage() {
         return (
             <div className="bg-scout min-h-screen page-container flex flex-col">
                 <Header />
-                <main id="main-content" className="flex-1 flex items-center justify-center px-6 py-12">
-                    <div className="w-full max-w-md">
+                <main id="main-content" className="flex-1 flex items-center justify-center px-4 md:px-8 py-20">
+                    <div className=" max-w-md">
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.6 }}
-                            className="card-scout p-8 rounded-xl shadow-2xl"
+                            className="bg-white/5 backdrop-blur p-9 rounded-xl border border-scout-green/30 shadow-2xl"
                         >
                             {/* Icon */}
                             <motion.div
@@ -92,25 +92,24 @@ export default function MembersPage() {
                                     <Lock className="w-8 h-8 text-white" />
                                 </div>
                             </motion.div>
-
                             {/* Heading */}
-                            <h1 className="text-4xl font-black text-center mb-2 text-scout-gradient italic uppercase">
-                                Members
+                            <h1 className="text-3xl font-black text-center mb-2 text-scout-gradient italic">
+                                Members Portal
                             </h1>
-                            <p className="text-center text-gray-600 mb-8">
-                                Leaders and Admins portal
+                            <p className="text-center text-gray-300 mb-8 text-sm">
+                                Leaders and Admins login
                             </p>
 
                             {/* Form */}
                             <form onSubmit={handleLogin} className="space-y-5 mb-8">
                                 {/* Username */}
                                 <div>
-                                    <label className="block text-sm font-bold text-gray-700 mb-2">Username</label>
+                                    <label className="block text-sm font-bold text-gray-300 mb-2">Username</label>
                                     <input
                                         type="text"
                                         value={loginData.username}
                                         onChange={(e) => setLoginData({ ...loginData, username: e.target.value })}
-                                        className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-scout-green focus:border-transparent bg-gray-50 transition-all"
+                                        className="w-full px-4 py-3 rounded-lg border border-scout-green/30 focus:outline-none focus:ring-2 focus:ring-scout-green focus:border-transparent bg-white/10 backdrop-blur text-white placeholder-gray-400 transition-all"
                                         placeholder="Enter username"
                                         required
                                     />
@@ -118,13 +117,13 @@ export default function MembersPage() {
 
                                 {/* Password */}
                                 <div>
-                                    <label className="block text-sm font-bold text-gray-700 mb-2">Password</label>
+                                    <label className="block text-sm font-bold text-gray-300 mb-2">Password</label>
                                     <div className="relative">
                                         <input
                                             type={showPassword ? 'text' : 'password'}
                                             value={loginData.password}
                                             onChange={(e) => setLoginData({ ...loginData, password: e.target.value })}
-                                            className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-scout-green focus:border-transparent bg-gray-50 transition-all"
+                                            className="w-full px-4 py-3 rounded-lg border border-scout-green/30 focus:outline-none focus:ring-2 focus:ring-scout-green focus:border-transparent bg-white/10 backdrop-blur text-white placeholder-gray-400 transition-all"
                                             placeholder="Enter password"
                                             required
                                         />
@@ -132,7 +131,7 @@ export default function MembersPage() {
                                             type="button"
                                             onClick={() => setShowPassword(!showPassword)}
                                             whileHover={{ scale: 1.1 }}
-                                            className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-scout-green transition-colors"
+                                            className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-scout-green transition-colors"
                                         >
                                             {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
                                         </motion.button>
@@ -155,17 +154,17 @@ export default function MembersPage() {
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
                                 transition={{ delay: 0.4 }}
-                                className="bg-blue-50 border-l-4 border-blue-500 rounded-lg p-5"
+                                className="bg-scout-green/10 border-l-4 border-scout-green rounded-lg p-5"
                             >
-                                <p className="text-sm font-bold text-blue-900 mb-3">Demo Credentials:</p>
+                                <p className="text-sm font-bold text-scout-green mb-3">Demo Credentials:</p>
                                 <div className="space-y-2">
                                     <div className="text-xs">
-                                        <span className="text-blue-900 font-semibold">Admin:</span>
-                                        <span className="text-blue-800 ml-2">admin / troop242admin</span>
+                                        <span className="text-scout-green font-semibold">Admin:</span>
+                                        <span className="text-gray-300 ml-2">admin / troop242admin</span>
                                     </div>
                                     <div className="text-xs">
-                                        <span className="text-blue-900 font-semibold">Leader:</span>
-                                        <span className="text-blue-800 ml-2">leader / troop242leader</span>
+                                        <span className="text-scout-green font-semibold">Leader:</span>
+                                        <span className="text-gray-300 ml-2">leader / troop242leader</span>
                                     </div>
                                 </div>
                             </motion.div>
@@ -180,10 +179,10 @@ export default function MembersPage() {
     return (
         <div className="bg-scout min-h-screen page-container">
             <Header />
-            <main id="main-content" className="pt-32 pb-20">
+            <main id="main-content" className="pt-32 pb-20 px-4 md:px-8">
                 {/* Dashboard Header */}
                 <section className="py-8 bg-gradient-to-r from-scout-green/10 to-emerald-600/10 border-b border-scout-green/30 mb-12">
-                    <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
+                    <div className="max-w-7xl mx-auto flex justify-between items-center">
                         <div>
                             <h1 className="text-4xl font-black text-scout-gradient italic uppercase">Dashboard</h1>
                             <p className="text-gray-700 mt-2">Welcome, {userRole === 'admin' ? 'Administrator' : 'Leader'}!</p>

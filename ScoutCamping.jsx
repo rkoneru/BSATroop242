@@ -68,36 +68,39 @@ export default function ScoutCamping() {
 
                     {/* Hero Content */}
                     <div className="absolute inset-0 flex flex-col items-center justify-center text-center z-10">
-                        <div className="max-w-2xl px-4">
-                            <h1 className="text-5xl md:text-6xl font-bold mb-4 text-white drop-shadow-lg">
-                                Scout Camping Adventures
+                        <div className="max-w-3xl px-4">
+                            <h1 className="text-6xl md:text-7xl font-black italic mb-4 drop-shadow-lg">
+                                <span className="text-scout-gradient">Scout Camping</span> Adventures
                             </h1>
                             <p className="text-xl md:text-2xl text-gray-100 mb-8 drop-shadow-lg">
                                 Experience the great outdoors with Troop 242
                             </p>
-                            <button
+                           {/*  <button
                                 onClick={() => {
                                     document.getElementById('activities').scrollIntoView({ behavior: 'smooth' });
                                 }}
-                                className="bg-scout-green hover:bg-green-700 text-white font-bold py-3 px-8 rounded-lg transition transform hover:scale-105 flex items-center gap-2 mx-auto"
+                                className=" hover:bg-green-700 text-white font-bold py-3 px-8 rounded-lg transition transform hover:scale-105 flex items-center gap-2 mx-auto"
                             >
                                 Explore Activities <ChevronDown size={20} />
-                            </button>
+                            </button> */}
                         </div>
                     </div>
 
                     {/* Scroll Indicator */}
-                    <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 animate-bounce">
+                  {/*   <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 animate-bounce">
                         <ChevronDown size={32} className="text-white" />
-                    </div>
+                    </div> */}
                 </div>
 
                 {/* Activities Section */}
-                <section id="activities" className="py-16 px-4 md:px-8">
-                    <div className="max-w-6xl mx-auto">
-                        <h2 className="text-4xl font-bold text-center mb-12 text-scout-tan">
-                            Camping Activities
-                        </h2>
+                <section id="activities" className="py-20 px-6 relative z-10">
+                    <div className="max-w-7xl mx-auto">
+                        <div className="mb-12">
+                            <h2 className="text-5xl md:text-6xl font-black italic mb-4">
+                                <span className="text-scout-gradient">Camping</span> Activities
+                            </h2>
+                            <p className="text-lg text-gray-700 max-w-2xl">Essential skills and knowledge for outdoor success.</p>
+                        </div>
 
                         <div className="grid md:grid-cols-2 gap-6">
                             {campingActivities.map((activity) => (
@@ -136,17 +139,20 @@ export default function ScoutCamping() {
                 </section>
 
                 {/* Merit Badges Section */}
-                <section id="badges" className="py-16 px-4 md:px-8 bg-gray-800/50">
-                    <div className="max-w-6xl mx-auto">
-                        <h2 className="text-4xl font-bold text-center mb-12 text-scout-tan">
-                            Camping Merit Badges
-                        </h2>
+                <section id="badges" className="py-20 px-6 relative z-10">
+                    <div className="max-w-7xl mx-auto">
+                        <div className="mb-12">
+                            <h2 className="text-5xl md:text-6xl font-black italic mb-4">
+                                <span className="text-scout-gradient">Merit</span> Badges
+                            </h2>
+                            <p className="text-lg text-gray-700 max-w-2xl">Recognize achievement and advancement in camping skills.</p>
+                        </div>
 
                         <div className="grid md:grid-cols-3 gap-6">
                             {campingMeritBadges.map((badge, idx) => (
                                 <div
                                     key={idx}
-                                    className="bg-gradient-to-br from-scout-green/20 to-transparent p-6 rounded-lg border border-scout-green/50 hover:border-scout-green transition"
+                                    className="bg-white/5 backdrop-blur p-6 rounded-xl border-l-4 border-scout-green hover:border-scout-green transition"
                                 >
                                     <div className="w-16 h-16 bg-scout-green/30 rounded-full flex items-center justify-center mb-4 mx-auto">
                                         <span className="text-2xl">🎖️</span>
@@ -163,32 +169,38 @@ export default function ScoutCamping() {
                     </div>
                 </section>
 
-                {/* Scout Oath Section */}
-                <section className="py-16 px-4 md:px-8 bg-gray-800/50">
-                    <div className="max-w-4xl mx-auto">
-                        <h2 className="text-4xl font-bold text-center mb-12 text-scout-tan">
-                            Scout Oath
-                        </h2>
+              {/*   {/* Scout Oath Section 
+                <section className="py-20 px-6 relative z-10">
+                    <div className="max-w-7xl mx-auto">
+                        <div className="mb-12">
+                            <h2 className="text-5xl md:text-6xl font-black italic mb-4">
+                                <span className="text-scout-gradient">Scout</span> Oath
+                            </h2>
+                            <p className="text-lg text-gray-700 max-w-2xl">The foundation of Scout values and principles.</p>
+                        </div>
 
-                        <div className="bg-gradient-to-r from-scout-green/20 to-transparent p-8 rounded-lg border border-scout-green/50">
-                            <p className="text-lg text-gray-100 leading-relaxed text-center">
-                                <span className="block mb-4 text-scout-tan font-bold">On my honor I will do my best</span>
+                        <div className="bg-white/5 backdrop-blur p-8 rounded-xl border-l-4 border-scout-green">
+                            <p className="text-lg text-gray-300 leading-relaxed text-center">
+                                <span className="block mb-4 text-scout-tan font-bold text-xl">On my honor I will do my best</span>
                                 <span className="block mb-4">To do my duty to God and my country</span>
                                 <span className="block mb-4">and to obey the Scout Law;</span>
                                 <span className="block mb-4">To help other people at all times;</span>
-                                <span className="block">To keep myself physically strong,</span>
+                                <span className="block mb-2">To keep myself physically strong,</span>
                                 <span className="block">mentally awake, and morally straight.</span>
                             </p>
                         </div>
                     </div>
                 </section>
 
-                {/* Scout Law Section */}
-                <section className="py-16 px-4 md:px-8">
-                    <div className="max-w-6xl mx-auto">
-                        <h2 className="text-4xl font-bold text-center mb-12 text-scout-tan">
-                            Scout Law
-                        </h2>
+                {/* Scout Law Section 
+                <section className="py-20 px-6 relative z-10">
+                    <div className="max-w-7xl mx-auto">
+                        <div className="mb-12">
+                            <h2 className="text-5xl md:text-6xl font-black italic mb-4">
+                                <span className="text-scout-gradient">Scout</span> Law
+                            </h2>
+                            <p className="text-lg text-gray-700 max-w-2xl">12 principles that guide Scout conduct and character.</p>
+                        </div>
 
                         <div className="grid md:grid-cols-2 gap-6">
                             {[
@@ -205,7 +217,7 @@ export default function ScoutCamping() {
                                 { point: 'A Scout is Clean', desc: 'A Scout keeps their body and mind fit. They help keep their home and community clean and protect the environment.' },
                                 { point: 'A Scout is Reverent', desc: 'A Scout is reverent toward God. They are faithful in their religious duties and respect the convictions of others.' }
                             ].map((law, idx) => (
-                                <div key={idx} className="bg-gray-800 p-6 rounded-lg border border-scout-green/30 hover:border-scout-green transition">
+                                <div key={idx} className="bg-white/5 backdrop-blur p-6 rounded-xl border-l-4 border-scout-green hover:border-scout-green transition">
                                     <h3 className="text-lg font-bold text-scout-green mb-2">{law.point}</h3>
                                     <p className="text-gray-300 text-sm leading-relaxed">{law.desc}</p>
                                 </div>
@@ -214,43 +226,46 @@ export default function ScoutCamping() {
                     </div>
                 </section>
 
-                {/* Outdoor Law Section */}
-                <section className="py-16 px-4 md:px-8 bg-gray-800/50">
-                    <div className="max-w-4xl mx-auto">
-                        <h2 className="text-4xl font-bold text-center mb-12 text-scout-tan">
-                            Outdoor Law
-                        </h2>
+                {/* Outdoor Law Section 
+                <section className="py-20 px-6 relative z-10">
+                    <div className="max-w-7xl mx-auto">
+                        <div className="mb-12">
+                            <h2 className="text-5xl md:text-6xl font-black italic mb-4">
+                                <span className="text-scout-gradient">Outdoor</span> Law
+                            </h2>
+                            <p className="text-lg text-gray-700 max-w-2xl">Environmental principles for responsible outdoor stewardship.</p>
+                        </div>
 
                         <div className="space-y-6">
-                            <div className="bg-gray-900 p-6 rounded-lg border-l-4 border-scout-green">
+                            <div className="bg-white/5 backdrop-blur p-6 rounded-xl border-l-4 border-scout-green">
                                 <h3 className="text-xl font-bold text-scout-green mb-2">Leave No Trace</h3>
                                 <p className="text-gray-300">
                                     Scouts minimize their environmental impact. We pack out what we pack in, stay on established trails, and restore campsites to their natural state.
                                 </p>
                             </div>
 
-                            <div className="bg-gray-900 p-6 rounded-lg border-l-4 border-scout-light-green">
+                            <div className="bg-white/5 backdrop-blur p-6 rounded-xl border-l-4 border-scout-light-green">
                                 <h3 className="text-xl font-bold text-scout-light-green mb-2">Respect Wildlife</h3>
                                 <p className="text-gray-300">
                                     Observe wildlife from a distance without disturbing them. Never feed animals and understand that they are living in their natural habitat.
                                 </p>
                             </div>
 
-                            <div className="bg-gray-900 p-6 rounded-lg border-l-4 border-scout-tan">
+                            <div className="bg-white/5 backdrop-blur p-6 rounded-xl border-l-4 border-scout-tan">
                                 <h3 className="text-xl font-bold text-scout-tan mb-2">Fire Safety</h3>
                                 <p className="text-gray-300">
                                     Build campfires responsibly. Always fully extinguish fires, never leave them unattended, and follow all local fire restrictions and regulations.
                                 </p>
                             </div>
 
-                            <div className="bg-gray-900 p-6 rounded-lg border-l-4 border-scout-light-green">
+                            <div className="bg-white/5 backdrop-blur p-6 rounded-xl border-l-4 border-scout-light-green">
                                 <h3 className="text-xl font-bold text-scout-light-green mb-2">Water Conservation</h3>
                                 <p className="text-gray-300">
                                     Use water wisely and keep natural water sources clean. Always camp at least 200 feet away from water sources to protect aquatic ecosystems.
                                 </p>
                             </div>
 
-                            <div className="bg-gray-900 p-6 rounded-lg border-l-4 border-scout-green">
+                            <div className="bg-white/5 backdrop-blur p-6 rounded-xl border-l-4 border-scout-green">
                                 <h3 className="text-xl font-bold text-scout-green mb-2">Responsible Camping</h3>
                                 <p className="text-gray-300">
                                     Camp only in designated areas. Use established campsites when available and camp on durable surfaces to prevent vegetation damage.
@@ -258,9 +273,9 @@ export default function ScoutCamping() {
                             </div>
                         </div>
                     </div>
-                </section>
+                </section> */}
 
-                {/* Camping Tips Section */}
+               {/* Camping Tips Section */}
                 <section className="py-20 px-6 relative z-10">
                     <div className="max-w-7xl mx-auto">
                         <div className="mb-12">
@@ -304,14 +319,14 @@ export default function ScoutCamping() {
                         <p className="text-xl text-gray-700 mb-10 max-w-2xl mx-auto">
                             Join Troop 242 for our upcoming camping trips and outdoor adventures. Learn valuable skills, make lasting friendships, and discover your outdoor potential.
                         </p>
-                        <button className="px-10 py-4 bg-scout-green text-white font-bold rounded-lg hover:bg-green-700 transition transform hover:scale-105 text-lg">
+                        <button className="px-10 py-4 text-white font-bold rounded-lg hover:bg-green-700 transition transform hover:scale-105 text-lg">
                             Sign Up for Next Campout
                         </button>
                     </div>
                 </section>
-            </main>
+            </div>
 
             <Footer />
-        </div>
+        </>
     );
 }

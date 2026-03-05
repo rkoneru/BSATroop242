@@ -187,6 +187,10 @@ body {
     grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
+.grid-cols-4 {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
 .text-center {
     text-align: center;
 }
@@ -290,7 +294,9 @@ body {
 .p-8 {
     padding: 2rem;
 }
-
+.p-9 {
+    padding: 4.25rem;
+}
 .px-3 {
     padding-left: 0.75rem;
     padding-right: 0.75rem;
@@ -479,6 +485,10 @@ body {
 
     .md\:grid-cols-3 {
         grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .md\:grid-cols-4 {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
     }
 
     .md\:py-24 {

@@ -345,6 +345,92 @@ export default function CampingPage() {
                         height: 100%;
                         pointer-events: none;
                     }
+
+                    /* ─── MOBILE & TABLET RESPONSIVE ─── */
+                    @media (max-width: 768px) {
+                        .camping-panel-day {
+                            left: 2%;
+                            max-width: 140px;
+                        }
+
+                        .camping-panel-day h1 {
+                            font-size: 1rem;
+                        }
+
+                        .camping-panel-day p {
+                            font-size: 0.8rem;
+                        }
+
+                        .camping-panel-night {
+                            right: 2%;
+                            width: 130px;
+                            max-width: 130px;
+                            top: 10%;
+                        }
+
+                        .camping-panel-night h2 {
+                            font-size: 0.9rem;
+                        }
+
+                        .camping-panel-night p {
+                            font-size: 0.7rem;
+                        }
+
+                        .camping-sun {
+                            width: 50px;
+                            height: 50px;
+                            box-shadow: 0 0 40px 15px #ffa500, 0 0 80px 25px rgba(255,165,0,0.3);
+                        }
+
+                        .camping-moon {
+                            width: 40px;
+                            height: 40px;
+                        }
+
+                        .camping-moon::after {
+                            width: 30px;
+                            height: 30px;
+                        }
+
+                        .camping-star {
+                            width: 1px;
+                            height: 1px;
+                        }
+
+                        .camping-panel-oath {
+                            max-width: 90vw;
+                            padding: 15px 18px;
+                            top: 15%;
+                            left: 50%;
+                            transform: translateX(-50%);
+                        }
+                    }
+
+                    @media (max-width: 480px) {
+                        .camping-panel-day {
+                            display: none;
+                        }
+
+                        .camping-panel-night {
+                            display: none;
+                        }
+
+                        .camping-sun {
+                            width: 40px;
+                            height: 40px;
+                        }
+
+                        .camping-moon {
+                            width: 30px;
+                            height: 30px;
+                        }
+
+                        .camping-panel-oath {
+                            max-width: 85vw;
+                            padding: 12px 15px;
+                            top: 20%;
+                        }
+                    }
                 `}</style>
 
                 <div className="camping-container">

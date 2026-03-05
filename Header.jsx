@@ -34,10 +34,12 @@ export default function Header() {
 
     // Simplified navigation structure for horizontal layout
     const navItems = [
-        { label: 'Home', href: '/' },
+        { label: 'Home', href: '/home' },
         { label: 'Calendar', href: '/calendar' },
         { label: 'Stories', href: '/stories' },
-        { label: 'About', href: '/about' },
+       
+        { label: 'Members', href: '/members' },
+         { label: 'About', href: '/about' },
        /*  {
             label: 'Activities',
             children: [
